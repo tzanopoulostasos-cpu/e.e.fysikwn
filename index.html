@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Διαγώνισμα Προσομοίωσης Πανελλαδικών 2025 - Φυσική</title>
+
+<script>
+(function () {
+  try {
+    window.__savedTheme = localStorage.getItem('physics-theme');
+    localStorage.removeItem('theme');
+  } catch (e) {
+    window.__savedTheme = null;
+  }
+})();
+document.documentElement.classList.add('mathjax-pending');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: ['class', '.physics-dark'],
+    theme: { extend: { fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+      serif: ['Source Serif Pro', 'Georgia', 'serif'],
+      mono: ['Fira Code', 'monospace']
+    }}}
+  }
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  chtml: { scale: 1.02, displayAlign: 'center' },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] },
+  startup: {
+    pageReady: function () {
+      return MathJax.startup.defaultPageReady().then(function () {
+        document.documentElement.classList.remove('mathjax-pending');
+      });
+    }
+  }
+};
+setTimeout(function() {
+  if (document.documentElement.classList.contains('mathjax-pending')) {
+    document.documentElement.classList.remove('mathjax-pending');
+  }
+}, 5000);
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "@id": "https://httpmyphysics.blogspot.com/2025/09/prosomoiosi-panelladikon-2025.html#learningresource",
+  "name": "Διαγώνισμα Προσομοίωσης Πανελλαδικών 2025 - Φυσική",
+  "description": "Πλήρεις διαδραστικές λύσεις του Διαγωνίσματος Προσομοίωσης Πανελλαδικών Εξετάσεων 2025 στη Φυσική Γ' Λυκείου.",
+  "inLanguage": "el",
+  "educationalLevel": "Γ' Λυκείου",
+  "learningResourceType": "Exam, Interactive Solutions, Practice Quiz",
+  "author": { "@type": "Person", "name": "Τάσος Τζανόπουλος" }
+}
+</script>
+
+<style>
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+#tema-a { --theme: #0891b2; }
+#tema-b { --theme: #2563eb; }
+#tema-g { --theme: #4f46e5; }
+#tema-d { --theme: #059669; }
+main.physics-dark #tema-a { --theme: #22d3ee; }
+main.physics-dark #tema-b { --theme: #60a5fa; }
+main.physics-dark #tema-g { --theme: #818cf8; }
+main.physics-dark #tema-d { --theme: #34d399; }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+main.physics-dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(51, 65, 85, 0.6);
+}
+
+.problem-card { position: relative; overflow: hidden; }
+.problem-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3.5px;
+  background: var(--theme, #94a3b8);
+  opacity: 0.95;
+}
+
+.ekfwnisi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.4rem;
+  background: var(--theme, #64748b);
+  color: #fff;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.ekfwnisi-label svg { width: 12px; height: 12px; }
+
+mjx-container:not([display="true"]) {
+  white-space: nowrap !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  margin: 0 0.08em;
+}
+mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+.problem-card p, .problem-card li,
+.solution-details p, .solution-details li { line-height: 1.8; }
+.problem-card, .problem-card p, .problem-card li,
+.solution-details, .solution-details > div { min-width: 0; }
+
+.math-box {
+  position: relative;
+  margin: 1.1rem 0;
+  padding: 0.9rem 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3.5px solid var(--theme, #0284c7);
+  border-radius: 0.5rem;
+  text-align: center;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  font-size: 1.02rem;
+}
+main.physics-dark .math-box { background: #0f172a; border-color: #1e293b; color: #f1f5f9; }
+.math-box::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 1px; bottom: 1px;
+  width: 24px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, #f8fafc 85%);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+main.physics-dark .math-box::after { background: linear-gradient(to right, transparent, #0f172a 85%); }
+
+.result-box {
+  margin: 1rem 0;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  border: 1px solid #7dd3fc;
+  border-left: 4px solid var(--theme, #0284c7);
+  border-radius: 0.5rem;
+  text-align: center;
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 1rem;
+}
+main.physics-dark .result-box {
+  background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+  border-color: #0284c7;
+  color: #e0f2fe;
+}
+
+.mathjax-pending .math-box,
+.mathjax-pending .result-box { visibility: hidden; min-height: 3rem; }
+
+.solution-details .sol-hide { display: none; }
+.solution-details[open] .sol-show { display: none; }
+.solution-details[open] .sol-hide { display: inline; }
+.solution-details summary:focus-visible { outline: 2px solid var(--theme, #0284c7); outline-offset: 2px; }
+.solution-details summary { list-style: none; }
+.solution-details summary::-webkit-details-marker { display: none; }
+
+.custom-scrollbar::-webkit-scrollbar { width: 5px; height: 5px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+main.physics-dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+#rest-content { display: none; }
+#rest-content.revealed { display: block; animation: slideDown 0.4s ease-out forwards; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.pulse-on-update { animation: pulse 0.4s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.hero-svg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+main.physics-dark .hero-svg-pattern { opacity: 0.15; }
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, #0e7490 0%, #1e40af 50%, #4338ca 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+main.physics-dark .hero-title-gradient {
+  background: linear-gradient(135deg, #67e8f9 0%, #93c5fd 50%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.score-widget {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.score-bar-fill {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html:not(.physics-dark) .quiz-opt,
+html:not(.physics-dark) .quiz-opt *:not(input) {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+}
+main.physics-dark .quiz-opt,
+main.physics-dark .quiz-opt *:not(input) {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+}
+html body .download-buttons a,
+html body .download-buttons a:link,
+html body .download-buttons a:visited,
+html body .download-buttons a *,
+html body a.download-btn,
+html body a.download-btn * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+}
+html body a.download-btn-word {
+  background-image: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+  border: 1px solid #1e3a8a !important;
+}
+html body a.download-btn-pdf {
+  background-image: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%) !important;
+  border: 1px solid #7f1d1d !important;
+}
+html body a.download-btn-word:hover { transform: translateY(-2px); }
+html body a.download-btn-pdf:hover { transform: translateY(-2px); }
+
+body:not(.revealed-all) #tema-b,
+body:not(.revealed-all) #tema-g,
+body:not(.revealed-all) #tema-d,
+body:not(.revealed-all) #summary,
+body:not(.revealed-all) #download-section {
+  display: none;
+}
+
+main.physics-dark {
+  background-color: #020617 !important;
+  color: #e2e8f0 !important;
+  color-scheme: dark;
+}
+main.physics-dark .problem-card {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+main.physics-dark .problem-card .bg-slate-50 {
+  background-color: #1e293b !important;
+}
+main.physics-dark .problem-card p,
+main.physics-dark .problem-card li,
+main.physics-dark .problem-card span,
+main.physics-dark .problem-card strong {
+  color: #e2e8f0 !important;
+}
+main.physics-dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(51, 65, 85, 0.6) !important;
+}
+main.physics-dark h2.text-2xl {
+  color: #f8fafc !important;
+}
+main.physics-dark .math-box {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+main.physics-dark .result-box {
+  background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%) !important;
+  border-color: #0284c7 !important;
+  color: #e0f2fe !important;
+}
+
+@media print {
+  .no-print, header, nav, #toTop, #backButton,
+  #calculatorModal, #cheatsheetDrawer, #progressBar,
+  .navbar, .sidebar, .widget, .footer,
+  .post-share-buttons, .blog-pager,
+  #navbar, #sidebar, #footer, .blog-feeds, .comments,
+  iframe, .ad, .adsbygoogle { display: none !important; }
+  html, body { background: #fff !important; color: #000 !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; height: auto !important; }
+  main, main * { visibility: visible !important; }
+  main { max-width: 100% !important; width: 100% !important; padding: 0 !important; margin: 0 !important; float: none !important; display: block !important; }
+  #rest-content { display: block !important; }
+  #reveal-btn-container { display: none !important; }
+  .problem-card { border: 1px solid #ccc !important; box-shadow: none !important; background: #fff !important; color: #000 !important; }
+  details > *:not(summary) { display: block !important; }
+  details summary i { display: none !important; }
+  .math-box, .result-box { background: #fafafa !important; color: #000 !important; border: 1px solid #ddd !important; }
+  section { page-break-inside: auto; }
+  article { page-break-inside: auto; }
+  #summary table { border-collapse: collapse !important; width: 100% !important; }
+  #summary th, #summary td { border: 1px solid #ccc !important; padding: 6px 8px !important; color: #000 !important; background: #fff !important; }
+  #summary th { background: #f0f0f0 !important; font-weight: bold !important; }
+  body:not(.revealed-all) #tema-b,
+  body:not(.revealed-all) #tema-g,
+  body:not(.revealed-all) #tema-d,
+  body:not(.revealed-all) #summary,
+  body:not(.revealed-all) #download-section {
+    display: block !important;
+  }
+}
+
+#summary table {
+  table-layout: fixed;
+  width: 100%;
+}
+#summary th:first-child,
+#summary td:first-child {
+  width: 60px;
+}
+#summary th:last-child,
+#summary td:last-child {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+#summary mjx-container[display="true"] {
+  font-size: 0.9em !important;
+  max-width: 100%;
+}
+#summary mjx-container:not([display="true"]) {
+  font-size: 0.95em !important;
+}
+
+h2.text-2xl { color: #0f172a; }
+main.physics-dark h2.text-2xl { color: #f8fafc; }
+
+.solution-details p,
+.solution-details li,
+.solution-details strong {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+}
+main.physics-dark .solution-details p,
+main.physics-dark .solution-details li,
+main.physics-dark .solution-details strong {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+
+.math-box, .math-box * { color: #0f172a; }
+main.physics-dark .math-box, main.physics-dark .math-box * { color: #f1f5f9; }
+.result-box, .result-box * { color: #0369a1; }
+main.physics-dark .result-box, main.physics-dark .result-box * { color: #e0f2fe; }
+html { background-color: #f8fafc; }
+
+
+.tf-btn {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background-color: #ffffff !important;
+  border: 2px solid #64748b !important;
+  font-weight: 700 !important;
+  padding: 6px 14px !important;
+}
+.tf-btn:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #0891b2 !important;
+}
+main.physics-dark .tf-btn {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-color: #334155 !important;
+  border: 2px solid #94a3b8 !important;
+}
+main.physics-dark .tf-btn:hover {
+  background-color: #475569 !important;
+  border-color: #22d3ee !important;
+}
+.tf-btn.border-emerald-500 {
+  background-color: #d1fae5 !important;
+  border-color: #10b981 !important;
+  color: #065f46 !important;
+  -webkit-text-fill-color: #065f46 !important;
+}
+.tf-btn.border-rose-500 {
+  background-color: #ffe4e6 !important;
+  border-color: #f43f5e !important;
+  color: #9f1239 !important;
+  -webkit-text-fill-color: #9f1239 !important;
+}
+main.physics-dark .tf-btn.border-emerald-500 {
+  background-color: rgba(6,95,70,0.5) !important;
+  border-color: #34d399 !important;
+  color: #a7f3d0 !important;
+  -webkit-text-fill-color: #a7f3d0 !important;
+}
+main.physics-dark .tf-btn.border-rose-500 {
+  background-color: rgba(159,18,57,0.5) !important;
+  border-color: #fb7185 !important;
+  color: #fecdd3 !important;
+  -webkit-text-fill-color: #fecdd3 !important;
+}
+#tema-a h2.text-2xl { color: #0e7490 !important; }
+#tema-b h2.text-2xl { color: #1d4ed8 !important; }
+#tema-g h2.text-2xl { color: #4338ca !important; }
+#tema-d h2.text-2xl { color: #047857 !important; }
+
+main.physics-dark #tema-a h2.text-2xl { color: #67e8f9 !important; }
+main.physics-dark #tema-b h2.text-2xl { color: #93c5fd !important; }
+main.physics-dark #tema-g h2.text-2xl { color: #a5b4fc !important; }
+main.physics-dark #tema-d h2.text-2xl { color: #6ee7b7 !important; }
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen transition-colors duration-300">
+
+<div class="fixed top-0 left-0 w-full h-1 bg-slate-200 z-50 no-print">
+  <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-500 to-blue-600 w-0 transition-all duration-150"></div>
+</div>
+
+<header class="sticky top-0 z-40 glass-panel border-b border-slate-200/80 no-print w-full shadow-sm">
+  <div class="w-full max-w-7xl mx-auto px-3 sm:px-5 lg:px-8">
+    <div class="h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0 shrink-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-md shrink-0">
+          <i class="fa-solid fa-atom text-lg sm:text-xl"></i>
+        </div>
+        <div class="min-w-0 hidden xs:block">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-cyan-600 block truncate">My Physics Blog</span>
+          <span class="text-xs sm:text-sm font-bold text-slate-900 leading-tight truncate block">Προσομοίωση 2025</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-0.5 text-sm font-semibold text-slate-600 flex-1 justify-center">
+        <a href="#tema-a" class="nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">Θέμα Α</a>
+        <a href="#tema-b" class="nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">Θέμα Β</a>
+        <a href="#tema-g" class="nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">Θέμα Γ</a>
+        <a href="#tema-d" class="nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100/80 transition-colors whitespace-nowrap">Θέμα Δ</a>
+      </nav>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="toggleCheatsheet()" title="Τυπολόγιο" class="p-2 rounded-xl bg-slate-100/80 text-slate-700 hover:bg-slate-200/80 transition-all flex items-center gap-1.5 text-xs font-medium">
+          <i class="fa-solid fa-book-bookmark text-cyan-500"></i>
+          <span class="hidden lg:inline">Τυπολόγιο</span>
+        </button>
+        <button onclick="toggleCalculator()" title="Υπολογιστής Φυσικής" class="p-2 rounded-xl bg-slate-100/80 text-slate-700 hover:bg-slate-200/80 transition-all flex items-center gap-1.5 text-xs font-medium">
+          <i class="fa-solid fa-calculator text-blue-500"></i>
+          <span class="hidden lg:inline">Calculator</span>
+        </button>
+        <button id="themeToggle" onclick="toggleTheme()" aria-label="Εναλλαγή θέματος" class="p-2.5 rounded-xl bg-slate-100/80 text-slate-700 hover:bg-slate-200/80 transition-all">
+          <i class="fa-solid fa-moon" id="themeIconMoon"></i>
+          <i class="fa-solid fa-sun hidden text-amber-400" id="themeIconSun"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="md:hidden border-t border-slate-200/80 overflow-x-auto custom-scrollbar">
+    <div class="flex gap-1.5 px-3 py-2 w-max text-xs font-semibold">
+      <a href="#tema-a" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-cyan-700 whitespace-nowrap">Θέμα Α</a>
+      <a href="#tema-b" class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 whitespace-nowrap">Θέμα Β</a>
+      <a href="#tema-g" class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 whitespace-nowrap">Θέμα Γ</a>
+      <a href="#tema-d" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 whitespace-nowrap">Θέμα Δ</a>
+    </div>
+  </nav>
+</header>
+
+<main class="w-full max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 overflow-x-hidden transition-colors duration-300">
+
+  <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white via-sky-50 to-indigo-50 p-5 sm:p-8 mb-8 shadow-xl border border-slate-200/80">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 400 300">
+    <defs>
+      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#0891b2" stroke-width="0.5" opacity="0.4"/>
+      </pattern>
+      <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    <circle cx="350" cy="50" r="80" fill="url(#glow1)"/>
+    <circle cx="50" cy="250" r="100" fill="url(#glow1)"/>
+  </svg>
+
+  <div class="absolute -right-12 -bottom-12 w-72 h-72 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -left-12 -top-12 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative z-10">
+    <h1 class="sr-only">Διαγώνισμα Προσομοίωσης Πανελλαδικών 2025 στη Φυσική</h1>
+
+    <div class="mb-6 overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-lg p-6 text-center">
+      <div class="text-4xl sm:text-6xl mb-3">⚛️</div>
+      <p class="font-serif text-2xl sm:text-3xl font-bold text-slate-800">Διαγώνισμα Προσομοίωσης</p>
+      <p class="text-lg sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">Πανελλαδικών Εξετάσεων με διαδραστική αυτοαξιολόγηση</p>
+      <p class="text-sm font-semibold text-cyan-600 mt-3 tracking-wider">ΦΥΣΙΚΗ Γ' ΛΥΚΕΙΟΥ</p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-sky-100 text-sky-800 border border-sky-200">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Σχολικό Έτος 2024-2025</span>
+      </span>
+      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-indigo-100 text-indigo-800 border border-indigo-200">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+        <span>Γ' Λυκείου • Θετικών Σπουδών & Υγείας</span>
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>Διαδραστική Έκδοση</span>
+      </span>
+    </div>
+
+    <div class="relative border-l-4 border-sky-500 pl-5 sm:pl-7 my-4">
+      <span class="absolute -top-2 -left-3 w-5 h-5 rounded-full bg-sky-500 shadow-md ring-4 ring-white"></span>
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-extrabold tracking-tight leading-snug text-slate-900">
+        Με Θέματα προτεινόμενα από την Ένωση Ελλήνων Φυσικών &amp; Αναλυτικές Λύσεις
+      </h2>
+    </div>
+
+    <p class="text-slate-600 text-sm sm:text-base max-w-3xl leading-relaxed font-normal my-5">
+      Ιδανικό για εξάσκηση στις <strong class="text-cyan-700">Ταλαντώσεις</strong>, <strong class="text-blue-700">Κύματα</strong>, <strong class="text-indigo-700">Φωτοηλεκτρικό Φαινόμενο</strong>, <strong class="text-emerald-700">Ηλεκτρομαγνητική Επαγωγή</strong> &amp; <strong class="text-slate-700">Μηχανική Στερεού Σώματος</strong>.
+    </p>
+
+    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80 text-xs sm:text-sm text-slate-600">
+      <span class="flex items-center gap-2 font-semibold text-slate-700">
+        <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Επιμέλεια Λύσεων: Τάσος Τζανόπουλος
+      </span>
+    </div>
+  </div>
+</section>
+
+  <section id="scoreWidget" class="score-widget glass-panel rounded-2xl p-4 mb-8 shadow-md border-2 border-transparent transition-all no-print">
+    <h2 class="sr-only">Διαδραστική βαθμολογία</h2>
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white shadow-md">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Σκορ</p>
+          <p class="text-xl font-extrabold text-slate-900"><span id="scoreValue">0</span> / 100</p>
+        </div>
+      </div>
+
+      <div class="flex-1 min-w-[200px] space-y-1.5">
+        <div class="flex items-center gap-2 text-[11px] font-semibold">
+          <span class="text-cyan-700 w-16">ΘΕΜΑ Α</span>
+          <div class="flex-1 h-2 rounded-full bg-slate-200 overflow-hidden">
+            <div id="barA" class="score-bar-fill h-full bg-cyan-500 w-0 rounded-full"></div>
+          </div>
+          <span class="text-slate-600 w-12 text-right"><span id="scoreA">0</span>/25</span>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] font-semibold">
+          <span class="text-blue-700 w-16">ΘΕΜΑ Β</span>
+          <div class="flex-1 h-2 rounded-full bg-slate-200 overflow-hidden">
+            <div id="barB" class="score-bar-fill h-full bg-blue-500 w-0 rounded-full"></div>
+          </div>
+          <span class="text-slate-600 w-12 text-right"><span id="scoreB">0</span>/25</span>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] font-semibold">
+          <span class="text-indigo-700 w-16">ΘΕΜΑ Γ</span>
+          <div class="flex-1 h-2 rounded-full bg-slate-200 overflow-hidden">
+            <div id="barG" class="score-bar-fill h-full bg-indigo-500 w-0 rounded-full"></div>
+          </div>
+          <span class="text-slate-600 w-12 text-right"><span id="scoreG">0</span>/25</span>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] font-semibold">
+          <span class="text-emerald-700 w-16">ΘΕΜΑ Δ</span>
+          <div class="flex-1 h-2 rounded-full bg-slate-200 overflow-hidden">
+            <div id="barD" class="score-bar-fill h-full bg-emerald-500 w-0 rounded-full"></div>
+          </div>
+          <span class="text-slate-600 w-12 text-right"><span id="scoreD">0</span>/25</span>
+        </div>
+      </div>
+
+      <button onclick="resetScore()" class="px-3 py-1.5 rounded-lg bg-slate-100 text-xs font-semibold text-slate-600 hover:bg-slate-200 transition-colors">
+        <i class="fa-solid fa-rotate-left mr-1"></i> Μηδενισμός
+      </button>
+    </div>
+  </section>
+
+  <section id="tema-a" class="mb-12 scroll-mt-32">
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-3">
+      <h2 class="text-2xl font-serif font-bold flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-md">Α</span>
+        <span>ΘΕΜΑ Α — Ερωτήσεις θεωρίας &amp; κρίσης</span>
+      </h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-cyan-100 text-cyan-700">25 μονάδες</span>
+    </div>
+
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden"
+             data-question="A1" data-theme="A" data-points="5" data-type="mc" data-correct="2">
+      <h3 class="sr-only">Ερώτηση Α1</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-cyan-600 text-sm tracking-wide">Α1</span>
+        <span class="text-xs font-medium text-slate-500">5 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Στις ερωτήσεις Α1-Α4 να γράψετε στην κόλλα σας τον αριθμό της ερώτησης και δίπλα το γράμμα (α, ή β, ή γ, ή δ) που αντιστοιχεί στη φράση, η οποία συμπληρώνει σωστά την ημιτελή πρόταση. <br><br><strong>Α1.</strong> Ένα φορτισμένο σωματίδιο εισέρχεται με ταχύτητα κάθετη στις δυναμικές γραμμές ομογενούς μαγνητικού πεδίου. Ποιο από τα παρακάτω μεγέθη μεταβάλλεται κατά τη διάρκεια της κίνησής του;</p>
+        <div class="quiz-options space-y-2 mb-4" data-correct="2">
+          <label onclick="selectQuizOption(this, 'A1', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A1" value="0" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>α) Η κινητική του ενέργεια</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A1', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A1" value="1" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>β) Το μέτρο της ταχύτητάς του</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A1', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A1" value="2" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>γ) Η ορμή του</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A1', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A1" value="3" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>δ) Η στροφορμή του ως προς το κέντρο της κυκλικής τροχιάς του σωματιδίου</span>
+          </label>
+        </div>
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-cyan-50 group-open:text-cyan-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed">
+            <p class="mb-2">Η δύναμη Lorentz είναι πάντα κάθετη στην ταχύτητα, άρα:</p>
+            <ul class="list-disc pl-6 space-y-1 mb-3">
+              <li>Η κινητική ενέργεια <strong>δεν</strong> μεταβάλλεται (το έργο είναι 0)</li>
+              <li>Το μέτρο της ταχύτητας <strong>δεν</strong> μεταβάλλεται</li>
+              <li>Το μέτρο της ορμής <strong>δεν</strong> μεταβάλλεται</li>
+              <li>Η <strong>διεύθυνση</strong> της ορμής (διάνυσμα) μεταβάλλεται → <strong>η ορμή $\vec{p}$ μεταβάλλεται</strong></li>
+              <li>Η στροφορμή $\vec{L} = \vec{r} \times \vec{p}$ παραμένει σταθερή (κάθετη στο επίπεδο)</li>
+            </ul>
+            <div class="result-box"><strong>Σωστή επιλογή: γ (Η ορμή του)</strong></div>
+          </div>
+        </details>
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'A1', 5)" class="px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 text-xs font-bold hover:bg-cyan-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+5)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <div id="reveal-btn-container" class="flex justify-center mb-8 no-print">
+      <button onclick="revealContent()"
+              class="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all">
+        <i class="fa-solid fa-arrow-down transition-transform group-hover:translate-y-0.5"></i>
+        Κλικ για συνέχεια στη διαδραστική μορφή
+      </button>
+    </div>
+
+    <div id="rest-content">
+
+      <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden"
+               data-question="A2" data-theme="A" data-points="5" data-type="mc" data-correct="2">
+        <h3 class="sr-only">Ερώτηση Α2</h3>
+        <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-bold text-cyan-600 text-sm tracking-wide">Α2</span>
+          <span class="text-xs font-medium text-slate-500">5 μονάδες</span>
+        </div>
+        <div class="p-6">
+          <span class="ekfwnisi-label">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Εκφώνηση
+          </span>
+          <p class="text-slate-800 font-medium mb-4"><strong>Α2.</strong> Ένα πλαίσιο περιστρέφεται μέσα σε ένα ομογενές μαγνητικό πεδίο με γωνιακή ταχύτητα περιστροφής ίση με ω, οπότε στα άκρα του αναπτύσσεται εναλλασσόμενη τάση $V = V_0 \eta\mu(\omega t)$. Με την τάση αυτή τροφοδοτείται ένας αντιστάτης στον οποίον αποδίδεται μέγιστη ισχύς ίση με Ρ. Αν τετραπλασιαστεί η γωνιακή ταχύτητα περιστροφής, η μέση ισχύς Ρ' στον ίδιο αντιστάτη θα είναι:</p>
+        <div class="quiz-options space-y-2 mb-4" data-correct="2">
+          <label onclick="selectQuizOption(this, 'A2', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A2" value="0" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>α) P' = 4P</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A2', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A2" value="1" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>β) P' = 16P</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A2', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A2" value="2" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>γ) P' = 8P</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A2', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A2" value="3" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>δ) Κανένα από τα προηγούμενα</span>
+          </label>
+        </div>
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-cyan-50 group-open:text-cyan-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p>Η μέγιστη ΗΕΔ από επαγωγή σε στρεφόμενο πλαίσιο είναι:</p>
+            <div class="math-box">$$ V_0 = N \cdot B \cdot A \cdot \omega $$</div>
+            <p>Άρα η μέγιστη τάση είναι ανάλογη του $\omega$. Αν τετραπλασιαστεί το $\omega$, τότε $V_0' = 4V_0$.</p>
+            <p>Η μέση ισχύς σε ωμικό αντιστάτη δίνεται από τη σχέση:</p>
+            <div class="math-box">$$ P_{μ} = \frac{V_{εν}^2}{R} = \frac{(V_0/\sqrt{2})^2}{R} = \frac{V_0^2}{2R} $$</div>
+            <p>Άρα η μέση ισχύς είναι ανάλογη του $V_0^2$, δηλαδή του $\omega^2$:</p>
+            <div class="math-box">$$ P' = \frac{(4V_0)^2}{2R} = 16 \cdot \frac{V_0^2}{2R} = 16P $$</div>
+            <div class="result-box"><strong>Σωστή επιλογή: β ($P' = 16P$)</strong></div>
+          </div>
+        </details>
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'A2', 5)" class="px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 text-xs font-bold hover:bg-cyan-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+5)
+          </button>
+        </div>
+      </div>
+    </article>
+
+      <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden"
+               data-question="A3" data-theme="A" data-points="5" data-type="mc" data-correct="1">
+        <h3 class="sr-only">Ερώτηση Α3</h3>
+        <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-bold text-cyan-600 text-sm tracking-wide">Α3</span>
+          <span class="text-xs font-medium text-slate-500">5 μονάδες</span>
+        </div>
+        <div class="p-6">
+          <span class="ekfwnisi-label">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Εκφώνηση
+          </span>
+          <p class="text-slate-800 font-medium mb-4"><strong>Α3.</strong> Σε φθίνουσα ταλάντωση η ενέργεια μεταβάλλεται με τον χρόνο σύμφωνα με την εξίσωση: $E = E_0 e^{-2\lambda t}$. Κατά τη χρονική στιγμή που η ενέργεια της ταλάντωσης έχει ελαττωθεί κατά 75% από την αρχική τιμή της $E_0$, το ποσοστό κατά το οποίο έχει ελαττωθεί το πλάτος της από την αρχική του τιμή είναι:</p>
+        <div class="quiz-options space-y-2 mb-4" data-correct="1">
+          <label onclick="selectQuizOption(this, 'A3', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A3" value="0" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>α) 25%</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A3', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A3" value="1" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>β) 50%</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A3', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A3" value="2" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>γ) 75%</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A3', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A3" value="3" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>δ) 12.5%</span>
+          </label>
+        </div>
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-cyan-50 group-open:text-cyan-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p>Δίνεται $E(t) = E_0 e^{-2\lambda t}$. Όταν η ενέργεια ελαττωθεί κατά 75% από την αρχική, μένει το 25%:</p>
+            <div class="math-box">$$ E(t) = 0{,}25 E_0 \Rightarrow E_0 e^{-2\lambda t} = 0{,}25 E_0 \Rightarrow e^{-2\lambda t} = \frac{1}{4} $$</div>
+            <p>Στη φθίνουσα ταλάντωση η ενέργεια σχετίζεται με το πλάτος: $E = \frac{1}{2} m \omega^2 A^2$, άρα $A \propto \sqrt{E}$:</p>
+            <div class="math-box">$$ \frac{A(t)}{A_0} = \sqrt{\frac{E(t)}{E_0}} = \sqrt{0{,}25} = 0{,}5 $$</div>
+            <p>Άρα το πλάτος έχει ελαττωθεί κατά $1 - 0{,}5 = 0{,}5$, δηλαδή <strong>50%</strong>.</p>
+            <div class="result-box"><strong>Σωστή επιλογή: β (50%)</strong></div>
+          </div>
+        </details>
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'A3', 5)" class="px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 text-xs font-bold hover:bg-cyan-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+5)
+          </button>
+        </div>
+      </div>
+    </article>
+
+      <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden"
+               data-question="A4" data-theme="A" data-points="5" data-type="mc" data-correct="3">
+        <h3 class="sr-only">Ερώτηση Α4</h3>
+        <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-bold text-cyan-600 text-sm tracking-wide">Α4</span>
+          <span class="text-xs font-medium text-slate-500">5 μονάδες</span>
+        </div>
+        <div class="p-6">
+          <span class="ekfwnisi-label">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4"><strong>Α4.</strong> Ένα φωτόνιο προσπίπτει σε ένα ελεύθερο ηλεκτρόνιο το οποίο θεωρείται αρχικά ακίνητο. Μετά την κρούση το σκεδαζόμενο φωτόνιο έχει αυξημένο μήκος κύματος σε σχέση με το προσπίπτον κατά $\Delta\lambda = 2h/mc$, όπου h η σταθερά του Planck, m η μάζα του ηλεκτρονίου και c η ταχύτητα του φωτός. Το σκεδαζόμενο φωτόνιο θα κινείται σε κατεύθυνση:</p>
+        <div class="quiz-options space-y-2 mb-4" data-correct="3">
+          <label onclick="selectQuizOption(this, 'A4', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A4" value="0" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>α) που σχηματίζει γωνία 90° με εκείνη του προσπίπτοντος.</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A4', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A4" value="1" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>β) που σχηματίζει γωνία 0° με εκείνη του προσπίπτοντος.</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A4', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A4" value="2" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>γ) αντίθετη από εκείνη του προσπίπτοντος.</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'A4', 5)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-cyan-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="A4" value="3" class="mr-3 text-cyan-600 focus:ring-cyan-500"><span>δ) άλλη από αυτές που προτείνονται στα (α), (β) και (γ)</span>
+          </label>
+        </div>
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-cyan-50 group-open:text-cyan-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p>Η μεταβολή του μήκους κύματος στο φαινόμενο Compton δίνεται από τη σχέση:</p>
+            <div class="math-box">$$ \Delta\lambda = \frac{h}{mc}(1 - \sigma\upsilon\nu\theta) $$</div>
+            <p>Δίνεται $\Delta\lambda = \dfrac{2h}{mc}$. Άρα:</p>
+            <div class="math-box">$$ \frac{h}{mc}(1 - \sigma\upsilon\nu\theta) = \frac{2h}{mc} \Rightarrow 1 - \sigma\upsilon\nu\theta = 2 \Rightarrow \sigma\upsilon\nu\theta = -1 $$</div>
+            <p>Άρα $\theta = 180°$, δηλαδή το σκεδαζόμενο φωτόνιο κινείται σε κατεύθυνση <strong>αντίθετη</strong> από εκείνη του προσπίπτοντος (οπισθοσκέδαση).</p>
+            <div class="result-box"><strong>Σωστή επιλογή: γ (αντίθετη)</strong></div>
+          </div>
+        </details>
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'A4', 5)" class="px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 text-xs font-bold hover:bg-cyan-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+5)
+          </button>
+        </div>
+      </div>
+    </article>
+
+      <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="A5" data-theme="A" data-points="5" data-type="tf-group">
+        <h3 class="sr-only">Ερώτηση Α5</h3>
+        <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+          <span class="font-bold text-cyan-600 text-sm tracking-wide">Α5</span>
+          <span class="text-xs font-medium text-slate-500">5 μονάδες</span>
+        </div>
+        <div class="p-6">
+          <span class="ekfwnisi-label">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4"><strong>A5.</strong> Να χαρακτηριστούν οι παρακάτω προτάσεις ως σωστές ή λάθος:</p>
+
+          <div class="space-y-3">
+            <div class="p-3 rounded-xl border border-slate-200" data-letter="α" data-answer="Σ" data-tf-points="1">
+              <p class="text-sm mb-2 text-slate-800">α. Μονάδα μέτρησης της στροφορμής στο SI είναι το $1\,\text{kg}\cdot\text{m}^2/\text{s}$.</p>
+              <div class="flex gap-2">
+                <button onclick="answerTF(this, 'Σ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-emerald-500 transition-colors">Σωστό</button>
+                <button onclick="answerTF(this, 'Λ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-rose-500 transition-colors">Λάθος</button>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200" data-letter="β" data-answer="Σ" data-tf-points="1">
+              <p class="text-sm mb-2 text-slate-800">β. Σε κάθε κεντρική ελαστική κρούση μεταξύ δύο σωμάτων οι μεταβολές των ορμών των σωμάτων είναι αντίθετες.</p>
+              <div class="flex gap-2">
+                <button onclick="answerTF(this, 'Σ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-emerald-500 transition-colors">Σωστό</button>
+                <button onclick="answerTF(this, 'Λ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-rose-500 transition-colors">Λάθος</button>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200" data-letter="γ" data-answer="Λ" data-tf-points="1">
+              <p class="text-sm mb-2 text-slate-800">γ. Κατά τη διάρκεια της περιστροφικής κίνησης ενός στερεού σώματος δεν υπάρχει χρονική στιγμή κατά την οποία η γωνιακή ταχύτητα να είναι ίση με μηδέν και η γωνιακή επιτάχυνση διάφορη του μηδενός.</p>
+              <div class="flex gap-2">
+                <button onclick="answerTF(this, 'Σ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-emerald-500 transition-colors">Σωστό</button>
+                <button onclick="answerTF(this, 'Λ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-rose-500 transition-colors">Λάθος</button>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200" data-letter="δ" data-answer="Σ" data-tf-points="1">
+              <p class="text-sm mb-2 text-slate-800">δ. Το φαινόμενο της παλίρροιας αποτελεί ένα παράδειγμα εξαναγκασμένης ταλάντωσης.</p>
+              <div class="flex gap-2">
+                <button onclick="answerTF(this, 'Σ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-emerald-500 transition-colors">Σωστό</button>
+                <button onclick="answerTF(this, 'Λ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-rose-500 transition-colors">Λάθος</button>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200" data-letter="ε" data-answer="Λ" data-tf-points="1">
+              <p class="text-sm mb-2 text-slate-800">ε. Στον Νόμο του Ampere, $\Sigma B \cdot \Delta L \cdot \sigma\upsilon\nu\theta = \mu_0 \cdot I_{\text{εγκ}}$, η ένταση του μαγνητικού πεδίου Β οφείλεται μόνο στα ρεύματα που περικλείει η κλειστή διαδρομή και όχι στα ρεύματα που βρίσκονται έξω από αυτή.</p>
+              <div class="flex gap-2">
+                <button onclick="answerTF(this, 'Σ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-emerald-500 transition-colors">Σωστό</button>
+                <button onclick="answerTF(this, 'Λ', 1)" class="tf-btn px-3 py-1 rounded-lg border border-slate-300 text-xs font-bold hover:border-rose-500 transition-colors">Λάθος</button>
+              </div>
+            </div>
+          </div>
+
+          <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+            <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-cyan-50 group-open:text-cyan-700 transition-colors">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+              <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-2">
+              <p><strong>α) Σωστό</strong> — $L = I\omega$, μονάδα $\text{kg}\cdot\text{m}^2/\text{s}$.</p>
+              <p><strong>β) Σωστό</strong> — Από Α.Δ.Ο.: $\Delta\vec{p}_1 = -\Delta\vec{p}_2$.</p>
+              <p><strong>γ) Λάθος</strong> — Στην αρχή ή στο τέλος περιστροφής μπορεί $ω = 0$ και $a_{γων} \neq 0$ (π.χ. στιγμιαία ακινητοποίηση).</p>
+              <p><strong>δ) Σωστό</strong> — Η σελήνη ασκεί περιοδική δύναμη → εξαναγκασμένη ταλάντωση.</p>
+              <p><strong>ε) Λάθος</strong> — Ο νόμος Ampere δίνει το ολοκλήρωμα, αλλά το $\vec{B}$ σε ένα σημείο εξαρτάται και από ρεύματα έξω από τη διαδρομή.</p>
+              <div class="result-box"><strong>Απαντήσεις: α-Σ, β-Σ, γ-Λ, δ-Σ, ε-Λ</strong></div>
+            </div>
+          </details>
+          <div class="mt-4 flex justify-end">
+            <button onclick="markTFGroup(this, 'A5', 5)" class="px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 text-xs font-bold hover:bg-cyan-200 transition-colors">
+              <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+5)
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+  <section id="tema-b" class="mb-12 scroll-mt-32">
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-3">
+      <h2 class="text-2xl font-serif font-bold flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-md">Β</span>
+        <span>ΘΕΜΑ Β — Ασκήσεις εφαρμογής</span>
+      </h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-100 text-blue-700">25 μονάδες</span>
+    </div>
+
+    <!-- Β1 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="B1" data-theme="B" data-points="8" data-type="mc" data-correct="0">
+      <h3 class="sr-only">Ερώτηση Β1</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-blue-600 text-sm tracking-wide">Β1</span>
+        <span class="text-xs font-medium text-slate-500">8 μονάδες (2 + 6)</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Στο εργαστήριο φυσικής του σχολείου μας διαθέτουμε ένα ιδανικό ελατήριο σταθεράς k και ένα σώμα βάρους w. Προσδένουμε το σώμα στο ελατήριο διατηρώντας το οριζόντιο τη μία φορά και την άλλη κατακόρυφο, όπως φαίνεται στα σχήματα 1 και 2. Εκτρέπουμε σε κάθε περίπτωση το σώμα από τη θέση φυσικού μήκους κατά $d = w/k$ και το αφήνουμε ελεύθερο, οπότε και εκτελεί ΑΑΤ. Το χρονικό διάστημα μεταξύ του πρώτου και του δεύτερου μηδενισμού της δυναμικής ενέργειας του ελατηρίου για κάθε μία από τις δύο ΑΑΤ είναι $\Delta t_1$ για την ΑΑΤ στο σχήμα 1 και $\Delta t_2$ για την ΑΑΤ στο σχήμα 2. Η σχέση αυτών των δύο χρονικών διαστημάτων είναι:</p>
+
+        <div class="my-4 flex justify-center">
+          <img src="https://i.imgur.com/QudQnzz.png" alt="Σχήμα Β1" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+        </div>
+
+        <div class="quiz-options space-y-2 mb-4" data-correct="0">
+          <label onclick="selectQuizOption(this, 'B1', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B1" value="0" class="mr-3 text-blue-600 focus:ring-blue-500"><span>α) $\Delta t_1 = \frac{3}{4}\Delta t_2$</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B1', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B1" value="1" class="mr-3 text-blue-600 focus:ring-blue-500"><span>β) $\Delta t_1 = \Delta t_2$</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B1', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B1" value="2" class="mr-3 text-blue-600 focus:ring-blue-500"><span>γ) $\Delta t_1 = \frac{6}{11}\Delta t_2$</span>
+          </label>
+        </div>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-blue-50 group-open:text-blue-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+          
+            <p><strong>Σχήμα 1 (οριζόντιο ελατήριο):</strong></p>
+            <p>Το σώμα εκτελεί ΑΑΤ γύρω από τη Θέση Φυσικού Μήκους (Θ.Φ.Μ.). Αφού το αφήνουμε από $d = w/k$ με $v_0 = 0$, το πλάτος είναι $A = d$.</p>
+            <p>Η δυναμική ενέργεια $U_{ελ}$ μηδενίζεται στη Θ.Φ.Μ., δηλαδή στο κέντρο της ταλάντωσης. Μεταξύ πρώτου και δεύτερου μηδενισμού μεσολαβεί <strong>μισή περίοδος</strong>:</p>
+            <div class="math-box">$$ \Delta t_1 = \frac{T}{2} \quad (1) $$</div>
+
+            <p><strong>Σχήμα 2 (κατακόρυφο ελατήριο):</strong></p>
+            <p>Στην κατακόρυφη διάταξη, η Θέση Ισορροπίας (Θ.Ι.) δεν ταυτίζεται με τη Θ.Φ.Μ. Στη Θ.Ι. ισχύει:</p>
+                 <div class="math-box">$$ mg = k\Delta\ell_0 \Rightarrow \Delta\ell_0 = \frac{mg}{k} = \frac{w}{k} = d $$</div>
+            <p>Αφού αφήνουμε το σώμα από τη Θ.Φ.Μ. (απόσταση $d$ πάνω από τη Θ.Ι.), το πλάτος είναι $A = d + \Delta\ell_0 = 2d$.</p>
+ <div class="my-4 flex justify-center">
+  <img src="https://i.imgur.com/yuXJHoV.png" alt="Σχήμα λύσης Β1" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+</div> 
+                  
+ <p>Η Θ.Φ.Μ. απέχει από τη Θ.Ι. κατά $\Delta\ell_0 = d = A/2$. Στον κύκλο αναφοράς, στο ζητούμενο χρονικό διάστημα το σώμα μεταβαίνει από τη θέση $+Α/2$ στη θέση $-Α$ και επιστρέφει ξανα στη θέση $+Α/2$. Η γωνία από τη θέση $y = +A/2$ (Θ.Φ.Μ) έως τη θέση $y = 0$ (Θ.Ι) είναι:</p>
+            <div class="math-box">$$ \eta\mu\phi = \frac{A/2}{A} = \frac{1}{2} \Rightarrow \phi = \frac{\pi}{6}\,\text{rad} $$</div>
+            <p>Άρα η γωνία που διανύεται από τη στιγμή που διέρχεται για πρώτη φορά από τη Θ.Φ.Μ έως την επόμενη είναι:</p>
+            <div class="math-box">$$ \Delta\theta = \pi + 2\phi = \pi + \frac{\pi}{3} = \frac{4\pi}{3}\,\text{rad} $$</div>
+            <p>Το χρονικό διάστημα υπολογίζεται από τη σχέση $\Delta\theta = \omega \Delta t_2$:</p>
+            <div class="math-box">$$ \Delta t_2 = \frac{\Delta\theta}{\omega} = \frac{4\pi/3}{2\pi/T} = \frac{2T}{3} \quad (2) $$</div>
+
+            <p><strong>Διαίρεση (1) / (2):</strong></p>
+            <div class="math-box">$$ \frac{\Delta t_1}{\Delta t_2} = \frac{T/2}{2T/3} = \frac{3}{4} \Rightarrow \Delta t_1 = \frac{3}{4}\Delta t_2 $$</div>
+
+            <div class="result-box"><strong>Σωστή επιλογή: α) $\Delta t_1 = \frac{3}{4}\Delta t_2$</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'B1', 8)" class="px-4 py-2 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold hover:bg-blue-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+8)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Β2 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="B2" data-theme="B" data-points="8" data-type="mc" data-correct="0">
+      <h3 class="sr-only">Ερώτηση Β2</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-blue-600 text-sm tracking-wide">Β2</span>
+        <span class="text-xs font-medium text-slate-500">8 μονάδες (2 + 6)</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Στην ελεύθερη επιφάνεια ενός υγρού διαδίδονται δύο όμοια κύματα προερχόμενα από τις σύγχρονες πηγές Π1 και Π2 οι οποίες εκτελούν α.α.τ. με εξίσωση $y = A\eta\mu(2\pi t)$. Το υλικό σημείο Σ της επιφάνειας βρίσκεται αρχικά ακίνητο σε αποστάσεις $3\lambda/2$ και $7\lambda/2$ (λ το μήκος του κύματος) στο χώρο μεταξύ των πηγών. Τα κύματα ξεκινούν ταυτόχρονα από τις πηγές κατά τη χρονική στιγμή $t = 0$. Η απόσταση που διανύεται από το υλικό σημείο Σ μεταξύ των χρονικών στιγμών $2T$ έως $5T$ είναι ίση με:</p>
+
+        <div class="quiz-options space-y-2 mb-4" data-correct="0">
+          <label onclick="selectQuizOption(this, 'B2', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B2" value="0" class="mr-3 text-blue-600 focus:ring-blue-500"><span>α) 18A</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B2', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B2" value="1" class="mr-3 text-blue-600 focus:ring-blue-500"><span>β) 20A</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B2', 8)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B2" value="2" class="mr-3 text-blue-600 focus:ring-blue-500"><span>γ) 24A</span>
+          </label>
+        </div>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-blue-50 group-open:text-blue-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p><strong>1. Διαφορά δρόμων:</strong></p>
+            <div class="math-box">$$ r_2 - r_1 = \frac{7\lambda}{2} - \frac{3\lambda}{2} = 2\lambda $$</div>
+            <p>Είναι πολλαπλάσιο του λ (N=2), άρα το σημείο Σ είναι σημείο <strong>ενισχυτικής συμβολής</strong> και ταλαντώνεται με πλάτος $A' = 2A$.</p>
+
+            <p><strong>2. Χρόνοι άφιξης των κυμάτων στο Σ:</strong></p>
+            <div class="math-box">$$ t_1 = \frac{r_1}{\upsilon} = \frac{3\lambda/2}{\lambda/T} = \frac{3T}{2}, \quad t_2 = \frac{r_2}{\upsilon} = \frac{7\lambda/2}{\lambda/T} = \frac{7T}{2} $$</div>
+
+            <p><strong>3. Ανάλυση χρονικών διαστημάτων:</strong></p>
+            <ul class="list-disc pl-6 space-y-2 mb-3">
+  <li><strong>$0 \le t &lt; 3T/2$</strong>: Κανένα κύμα δεν έχει φτάσει → το Σ είναι ακίνητο.</li>
+  <li><strong>$3T/2 \le t &lt; 7T/2$</strong>: Μόνο το κύμα από Π1 έχει φτάσει → το Σ ταλαντώνεται με πλάτος $A$.</li>
+  <li><strong>$t \ge 7T/2$</strong>: Και τα δύο κύματα έχουν φτάσει → το Σ ταλαντώνεται με πλάτος $2A$.</li>
+</ul>
+
+            <p><strong>4. Διάστημα $2T \to 5T$:</strong></p>
+            <p>Το διάστημα χωρίζεται σε δύο υπο-διαστήματα:</p>
+            <p><strong>(α) $2T \to 7T/2$</strong> (πλάτος Α):</p>
+            <div class="math-box">$$ \Delta t_a = \frac{7T}{2} - 2T = \frac{3T}{2} $$</div>
+            <p>Σε χρόνο $T$ το σώμα διανύει $4A$. Άρα σε $3T/2$:</p>
+            <div class="math-box">$$ s_a = \frac{3T/2}{T} \cdot 4A = 6A $$</div>
+
+            <p><strong>(β) $7T/2 \to 5T$</strong> (πλάτος 2Α):</p>
+            <div class="math-box">$$ \Delta t_b = 5T - \frac{7T}{2} = \frac{3T}{2} $$</div>
+            <p>Σε χρόνο $T$ το σώμα με πλάτος $2A$ διανύει $4 \cdot 2A = 8A$. Άρα σε $3T/2$:</p>
+            <div class="math-box">$$ s_b = \frac{3T/2}{T} \cdot 8A = 12A $$</div>
+
+            <p><strong>5. Συνολική απόσταση:</strong></p>
+            <div class="math-box">$$ s_{ολ} = s_a + s_b = 6A + 12A = 18A $$</div>
+
+            <div class="result-box"><strong>Σωστή επιλογή: α) 18A</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'B2', 8)" class="px-4 py-2 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold hover:bg-blue-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+8)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Β3 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="B3" data-theme="B" data-points="9" data-type="mc" data-correct="2">
+      <h3 class="sr-only">Ερώτηση Β3</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-blue-600 text-sm tracking-wide">Β3</span>
+        <span class="text-xs font-medium text-slate-500">9 μονάδες (2 + 7)</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Ένα πηνίο με αυτεπαγωγή L και μηδενική ωμική αντίσταση συνδέεται με τους αντιστάτες $R_1 = R$, $R_2 = R$ καθώς και με ηλεκτρική πηγή ΗΕΔ Ε και εσωτερικής αντίστασης $r = R$, όπως φαίνεται στο σχήμα, με τον διακόπτη Δ να παραμένει κλειστός για αρκετό χρονικό διάστημα, ώστε το κύκλωμα να φτάσει σε κατάσταση με σταθερή ένταση ρεύματος. Κάποια στιγμή ανοίγουμε τον διακόπτη Δ. Αμέσως μετά το άνοιγμα του διακόπτη, ο ρυθμός με τον οποίο το πηνίο προσφέρει ενέργεια στο κύκλωμα είναι:</p>
+
+        <div class="my-4 flex justify-center">
+          <img src="https://i.imgur.com/ULnWlwi.png" alt="Σχήμα Β3" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+        </div>
+
+        <div class="quiz-options space-y-2 mb-4" data-correct="2">
+          <label onclick="selectQuizOption(this, 'B3', 9)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B3" value="0" class="mr-3 text-blue-600 focus:ring-blue-500"><span>α) $E^2/R$</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B3', 9)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B3" value="1" class="mr-3 text-blue-600 focus:ring-blue-500"><span>β) $2E^2/R$</span>
+          </label>
+          <label onclick="selectQuizOption(this, 'B3', 9)" class="quiz-opt flex items-center p-3 rounded-xl border border-slate-200 hover:border-blue-500 cursor-pointer transition-all text-sm">
+            <input type="radio" name="B3" value="2" class="mr-3 text-blue-600 focus:ring-blue-500"><span>γ) $2E^2/9R$</span>
+          </label>
+        </div>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-blue-50 group-open:text-blue-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p><strong>1. Με κλειστό διακόπτη (μόνιμη κατάσταση):</strong></p>
+            <p>Το πηνίο με μηδενική ωμική αντίσταση συμπεριφέρεται σαν βραχυκύκλωμα. Άρα οι R1 και R2 είναι παράλληλα συνδεδεμένοι (ισοδύναμη αντίσταση $R/2$), και σε σειρά με την εσωτερική αντίσταση $r = R$:</p>
+            <div class="math-box">$$ I = \frac{E}{R/2 + R} = \frac{E}{3R/2} = \frac{2E}{3R} $$</div>
+            <p>Η Η πολική τάση (= τάση στους R1, R2) είναι:</p>
+            <div class="math-box">$$ V_{ΚΛ} = E - I \cdot r = E - \frac{2E}{3R} \cdot R = \frac{E}{3} $$</div>
+            <p>Το ρεύμα που διαρρέει τον R2 (και το πηνίο) είναι:</p>
+            <div class="math-box">$$ I_2 = \frac{V_{ΚΛ}}{R} = \frac{E}{3R} $$</div>
+            <p>Άρα το ρεύμα στο πηνίο είναι $I_L = I_2 = \dfrac{E}{3R}$ (σταθερό, σε μόνιμη κατάσταση).</p>
+
+            <p><strong>2. Αμέσως μετά το άνοιγμα του διακόπτη:</strong></p>
+            <p>Το ρεύμα στο πηνίο δεν μπορεί να αλλάξει ακαριαία, άρα:</p>
+            <div class="math-box">$$ i_L(0^+) = \frac{E}{3R} $$</div>
+            <p>Μετά το άνοιγμα του διακόπτη, το κύκλωμα είναι το πηνίο σε σειρά με τους R2 και R1 (η πηγή καποσυνδέεται). Άρα η συνολική αντίσταση είναι $2R$ (εσωτερική του πηνίου = 0).</p>
+            <p>Η ΗΕΔ αυτεπαγωγής που αναπτύσσεται στο πηνίο ακριβώς τη στιγμή του ανοίγματος:</p>
+            <div class="math-box">$$ E_{αυτ} = i_L \cdot 2R = \frac{E}{3R} \cdot 2R = \frac{2E}{3} $$</div>
+
+            <p><strong>3. Ρυθμός προσφοράς ενέργειας:</strong></p>
+            <p>Ο ρυθμός με τον οποίο το πηνίο προσφέρει ενέργεια στο κύκλωμα είναι η ισχύς του:</p>
+            <div class="math-box">$$ P = E_{αυτ} \cdot i_L = \frac{2E}{3} \cdot \frac{E}{3R} = \frac{2E^2}{9R} $$</div>
+
+            <div class="result-box"><strong>Σωστή επιλογή: γ) $2E^2/9R$</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markMC(this, 'B3', 9)" class="px-4 py-2 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold hover:bg-blue-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+9)
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="tema-g" class="mb-12 scroll-mt-32">
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-3">
+      <h2 class="text-2xl font-serif font-bold flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-800 text-white flex items-center justify-center shadow-md">Γ</span>
+        <span>ΘΕΜΑ Γ — Μηχανική Στερεού Σώματος</span>
+      </h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-700">25 μονάδες</span>
+    </div>
+
+    <div class="relative bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl border-2 border-dashed border-indigo-300 p-5 sm:p-6 mb-6 shadow-sm">
+      <div class="absolute -top-3 left-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εισαγωγική εκφώνηση
+        </span>
+      </div>
+      <div class="text-slate-700 text-sm leading-relaxed space-y-3 mt-2">
+        <p>Ομογενής λεπτή ράβδος ΑΓ μάζας $M = 2m$ ισορροπεί οριζόντια, αρθρωμένη στο άκρο της Α σε κατακόρυφο τοίχο. Στο μέσο της Ο είναι δεμένο αβαρές και μη εκτατό νήμα που αναρτάται από τον τοίχο σχηματίζοντας γωνία $\theta = 30°$ με τη διεύθυνση της ράβδου. Στο ελεύθερο άκρο Γ είναι στερεωμένο κατακόρυφο ελατήριο σταθεράς k που στο κατώτερο άκρο του έχει προστεθεί ακλόνητα μικρό σώμα μάζας m. Το σύστημα αρχικά ισορροπεί.</p>
+      </div>
+    </div>
+
+    <div class="my-4 flex justify-center">
+      <img src="https://i.imgur.com/KwH2B6r.png" alt="Σχήμα Γ" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+    </div>
+
+    <!-- Γ1 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="G1" data-theme="G" data-points="6" data-type="open">
+      <h3 class="sr-only">Ερώτηση Γ1</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-indigo-600 text-sm tracking-wide">Γ1</span>
+        <span class="text-xs font-medium text-slate-500">6 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Να υπολογίσετε το μέτρο της δύναμης που δέχεται ο κατακόρυφος τοίχος στο σημείο της άρθρωσης.</p>
+
+      <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+  <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-indigo-50 group-open:text-indigo-700 transition-colors">
+    <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+  </summary>
+  <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-4">
+
+    <!-- Σχήμα -->
+    <div class="my-4 flex justify-center">
+      <img src="https://i.imgur.com/aD8H771.png" alt="Σχήμα δυνάμεων Γ1" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+    </div>
+
+    <p><strong>1. Ισορροπία σώματος μάζας m:</strong></p>
+    <p>Το σώμα ισορροπεί στο κάτω άκρο του ελατηρίου. Από την ισορροπία του:</p>
+    <div class="math-box">$$ mg = F_{ελ} \Rightarrow F_{ελ} = mg $$</div>
+
+    <p><strong>2. Ισορροπία ράβδου — Ροπές ως προς Α (θετική: αντίθετα ρολογιού):</strong></p>
+    <p>Οι δυνάμεις που ασκούνται στη ράβδο:</p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li><strong>Τάση νήματος</strong> $\vec{T}$ στο μέσο Ο → συνιστώσα $T_y = T \cdot \eta\mu 30°$ προς τα πάνω</li>
+      <li><strong>Βάρος ράβδου</strong> $W_ρ = Mg = 2mg$ στο μέσο Ο → προς τα κάτω</li>
+      <li><strong>Δύναμη ελατηρίου</strong> $F_{ελ} = mg$ στο Γ → προς τα κάτω</li>
+      <li><strong>Αντίδραση άρθρωσης</strong> $\vec{A}$ στο Α (δεν δημιουργεί ροπή ως προς Α)</li>
+    </ul>
+
+    <div class="math-box">$$ T_y \cdot \frac{L}{2} - W_ρ \cdot \frac{L}{2} - F_{ελ} \cdot L = 0 $$</div>
+    <div class="math-box">$$ T \cdot \eta\mu 30° \cdot \frac{L}{2} = 2mg \cdot \frac{L}{2} + mg \cdot L $$</div>
+    <div class="math-box">$$ T \cdot \frac{1}{2} \cdot \frac{1}{2} = mg + mg = 2mg $$</div>
+    <div class="math-box">$$ \frac{T}{4} = 2mg \Rightarrow T = 8mg $$</div>
+
+    <p><strong>3. Συνιστώσες τάσης:</strong></p>
+    <div class="math-box">$$ T_x = T \cdot \sigma\upsilon\nu 30° = 8mg \cdot \frac{\sqrt{3}}{2} = 4\sqrt{3}\,mg $$</div>
+    <div class="math-box">$$ T_y = T \cdot \eta\mu 30° = 8mg \cdot \frac{1}{2} = 4mg $$</div>
+
+    <p><strong>4. Ισορροπία ράβδου — Δυνάμεις:</strong></p>
+    <p>Οριζόντια:</p>
+    <div class="math-box">$$ A_x = T_x = 4\sqrt{3}\,mg $$</div>
+    <p>Κατακόρυφα:</p>
+    <div class="math-box">$$ A_y + T_y = W_ρ + F_{ελ} \Rightarrow A_y + 4mg = 2mg + mg \Rightarrow A_y = -mg $$</div>
+
+    <p><strong>5. Μέτρο δύναμης άρθρωσης:</strong></p>
+    <div class="math-box">$$ A = \sqrt{A_x^2 + A_y^2} = \sqrt{(4\sqrt{3}\,mg)^2 + (mg)^2} = \sqrt{48m^2g^2 + m^2g^2} = \sqrt{49}\,mg = 7\,mg $$</div>
+
+    <div class="result-box"><strong>$A = 7\,mg$</strong></div>
+  </div>
+</details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'G1', 6)" class="px-4 py-2 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-bold hover:bg-indigo-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+6)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Γ2 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="G2" data-theme="G" data-points="11" data-type="open">
+      <h3 class="sr-only">Ερώτηση Γ2</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-indigo-600 text-sm tracking-wide">Γ2</span>
+        <span class="text-xs font-medium text-slate-500">11 μονάδες (4 + 7)</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Το σώμα μάζας m εκτοξεύεται κατακόρυφα προς τα πάνω με ταχύτητα $u = \sqrt{m/k}\,g$.<br><br><strong>Γ2.1</strong> Να βρείτε το πλάτος της ταλάντωσης του σώματος (μονάδες 4).<br><strong>Γ2.2</strong> Να βρείτε την τιμή του λόγου $T_1/T_2$ των τάσεων του νήματος στις θέσεις που μηδενίζεται στιγμιαία η ταχύτητα του σώματος. Δίνεται ότι $T_1$ και $T_2$ οι τιμές των τάσεων του νήματος την πρώτη και τη δεύτερη φορά μηδενισμού της ταχύτητας (μονάδες 7).</p>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-indigo-50 group-open:text-indigo-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-4">
+            <p><strong>Γ2.1 — Πλάτος ταλάντωσης:</strong></p>
+            <p>Το σώμα ισορροπεί στη θέση όπου η δύναμη του ελατηρίου ισούται με το βάρος του:</p>
+            <div class="math-box">$$ mg = k\Delta\ell \Rightarrow \Delta\ell = \frac{mg}{k} $$</div>
+            <p>Η ταλάντωση γίνεται γύρω από τη Θέση Ισορροπίας (Θ.Ι.) που απέχει $\Delta\ell$ από τη Θ.Φ.Μ.
+            <p>Εφόσον η εκτόξευση γίνεται από τη Θ.Ι. με ταχύτητα $u$, η μέγιστη ταχύτητα ταλάντωσης είναι $u = \omega A = \sqrt{m/k}\,g$:</p>
+            <div class="math-box">$$ u = \omega A \Rightarrow A = \frac{u}{\omega} = \frac{\sqrt{m/k}\,g}{\sqrt{k/m}} = \frac{mg}{{k}} $$</div>
+            <p>Όμως στην αρχική ισορροπία ισχύει $mg = k\Delta\ell$, άρα $\Delta\ell = \dfrac{mg}{k} = A$ 
+            <p>Άρα το πλάτος είναι $A = \Delta\ell = \dfrac{mg}{k}$. Επομένως η πάνω ακραία θέση, ταυτίζεται με τη Θ.Φ.Μ. του ελατηρίου.</p>
+
+         <p><strong>Γ2.2 — Λόγος τάσεων νήματος $T_1 / T_2$:</strong></p>
+<p>Το σώμα ταλαντώνεται γύρω από τη Θ.Ι. με πλάτος $A$. Η ταχύτητα μηδενίζεται σε δύο θέσεις: στη μέγιστη θετική (+A) και στην ελάχιστη αρνητική (−A) απομάκρυνση.</p>
+
+<p><strong>Θέση 1 ($y = -A$, δηλαδή κάτω ακραία):</strong></p>
+<p>Η επιμήκυνση του ελατηρίου είναι $\Delta\ell + A = 2\Delta\ell$. Άρα:</p>
+<div class="math-box">$$ F_{ελ,1} = k \cdot 2\Delta\ell = 2mg $$</div>
+<p>Η ράβδος ισορροπεί ως προς Α, με τη ροπή του βάρους της ράβδου:</p>
+<div class="math-box">$$ T_{1y} \cdot \frac{L}{2} = W_ρ \cdot \frac{L}{2} + F_{ελ,1} \cdot L $$</div>
+<div class="math-box">$$ T_{1y} \cdot \frac{L}{2} = 2mg \cdot \frac{L}{2} + 2mg \cdot L = mgL + 2mgL = 3mgL $$</div>
+<div class="math-box">$$ T_{1y} = 6mg \Rightarrow T_1 = \frac{6mg}{\eta\mu 30°} = \frac{6mg}{1/2} = 12mg $$</div>
+
+<p><strong>Θέση 2 ($y = +A$, δηλαδή πάνω ακραία):</strong></p>
+<p>Η επιμήκυνση του ελατηρίου είναι $\Delta\ell - A = 0$. Άρα $F_{ελ,2} = 0$.</p>
+<p>Τώρα η ράβδος ισορροπεί υπό το βάρος της $W_ρ = 2mg$ (στο μέσο Ο) και την τάση $T_2$:</p>
+<div class="math-box">$$ T_{2y} \cdot \frac{L}{2} = W_ρ \cdot \frac{L}{2} \Rightarrow T_{2y} = W_ρ = 2mg $$</div>
+<div class="math-box">$$ T_2 = \frac{T_{2y}}{\eta\mu 30°} = \frac{2mg}{1/2} = 4mg $$</div>
+
+<p><strong>Λόγος:</strong></p>
+<div class="math-box">$$ \frac{T_1}{T_2} = \frac{12mg}{4mg} = 3 $$</div>
+
+<div class="result-box"><strong>$A = \dfrac{mg}{k}$, $\dfrac{T_1}{T_2} = 3$</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'G2', 11)" class="px-4 py-2 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-bold hover:bg-indigo-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+11)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Γ3 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="G3" data-theme="G" data-points="8" data-type="open">
+      <h3 class="sr-only">Ερώτηση Γ3</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-indigo-600 text-sm tracking-wide">Γ3</span>
+        <span class="text-xs font-medium text-slate-500">8 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Να υπολογίσετε τη μέγιστη τιμή του πλάτους της ταλάντωσης του σώματος, ώστε η ράβδος να παραμένει διαρκώς σε ισορροπία.</p>
+
+       <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+  <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-indigo-50 group-open:text-indigo-700 transition-colors">
+    <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+  </summary>
+  <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-4">
+
+    <!-- Σχήμα -->
+    <div class="my-4 flex justify-center">
+      <img src="https://i.imgur.com/x3aLXOA.png" alt="Σχήμα λύσης Γ3" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+    </div>
+
+    <p>Για να παραμένει η ράβδος σε ισορροπία, το νήμα πρέπει να είναι <strong>διαρκώς τεντωμένο</strong>, δηλαδή $T \ge 0$.</p>
+
+    <p>Από την ισορροπία της ράβδου ως προς Α (λαμβάνοντας υπόψη τη ροπή του βάρους της ράβδου):</p>
+    <div class="math-box">$$ T_y \cdot \frac{L}{2} = W_ρ \cdot \frac{L}{2} + F_{ελ} \cdot L $$</div>
+    <p>όπου $T_y = T \cdot \eta\mu 30° = T/2$ και $W_ρ = Mg = 2mg$.</p>
+    <p>Αντικαθιστώντας:</p>
+    <div class="math-box">$$ \frac{T}{2} \cdot \frac{L}{2} = 2mg \cdot \frac{L}{2} + F_{ελ} \cdot L $$</div>
+    <div class="math-box">$$ \frac{T}{4} = mg + F_{ελ} \Rightarrow T = 4mg + 4F_{ελ} $$</div>
+
+    <p>Όπου $F_{ελ} = k(\Delta\ell - y)$ με $y$ η απομάκρυνση από τη Θ.Ι. (θετική προς τα πάνω, όπου το ελατήριο συμπιέζεται).</p>
+
+    <p>Για $T \ge 0$:</p>
+    <div class="math-box">$$ 4mg + 4F_{ελ} \ge 0 \Rightarrow mg + F_{ελ} \ge 0 $$</div>
+
+    <p><strong>Χειρότερη περίπτωση:</strong> $y = +A$ (πάνω ακραία θέση, μέγιστη συμπίεση):</p>
+    <p>$F_{ελ} = k(\Delta\ell - A)$. Με $k\Delta\ell = mg$:</p>
+    <div class="math-box">$$ mg + k(\Delta\ell - A) \ge 0 \Rightarrow mg + mg - kA \ge 0 $$</div>
+    <div class="math-box">$$ 2mg \ge kA \Rightarrow A \le \frac{2mg}{k} $$</div>
+
+    <p>Άρα η μέγιστη τιμή του πλάτους είναι:</p>
+    <div class="result-box"><strong>$A_{max} = \dfrac{2mg}{k}$</strong></div>
+  </div>
+</details>
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'G3', 8)" class="px-4 py-2 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-bold hover:bg-indigo-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+8)
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="tema-d" class="mb-12 scroll-mt-32">
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-3">
+      <h2 class="text-2xl font-serif font-bold flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-600 to-emerald-800 text-white flex items-center justify-center shadow-md">Δ</span>
+        <span>ΘΕΜΑ Δ — Κρούσεις &amp; Ηλεκτρομαγνητισμός</span>
+      </h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-700">25 μονάδες</span>
+    </div>
+
+    <div class="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border-2 border-dashed border-emerald-300 p-5 sm:p-6 mb-6 shadow-sm">
+      <div class="absolute -top-3 left-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εισαγωγική εκφώνηση
+        </span>
+      </div>
+      <div class="text-slate-700 text-sm leading-relaxed space-y-3 mt-2">
+        <p>Ένα σώμα μάζας $M = 150\,\text{g}$ βρίσκεται πάνω σε λείο οριζόντιο επίπεδο και είναι προσδεμένο στην άκρη οριζόντιου ελατηρίου σταθεράς $k = 80\,\text{N/m}$, η άλλη άκρη του οποίου είναι στερεωμένη ακλόνητα. Το σώμα μάζας M αρχικά ισορροπεί ακίνητο με το ελατήριο να έχει το φυσικό του μήκος. Βλήμα μάζας $m = 50\,\text{g}$, που κινείται στη διεύθυνση του άξονα του ελατηρίου με ταχύτητα $υ_0 = 20\,\text{m/s}$, συγκρούεται με το σώμα μάζας M και σφηνώνεται σε αυτό (Σχήμα 1).</p>
+      </div>
+    </div>
+
+    <div class="my-4 flex justify-center">
+      <img src="https://i.imgur.com/tzwxqI7.png" alt="Σχήμα 1 Δ" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+    </div>
+
+    <!-- Δ1 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="D1" data-theme="D" data-points="8" data-type="open">
+      <h3 class="sr-only">Ερώτηση Δ1</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-emerald-600 text-sm tracking-wide">Δ1</span>
+        <span class="text-xs font-medium text-slate-500">8 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Να υπολογίσετε την απόσταση που θα διανύσει το συσσωμάτωμα στο χρονικό διάστημα μιας περιόδου T της απλής αρμονικής ταλάντωσης που θα εκτελέσει.</p>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-emerald-50 group-open:text-emerald-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-3">
+            <p><strong>1. Ταχύτητα συσσωματώματος μετά την κρούση (Α.Δ.Ο.):</strong></p>
+            <div class="math-box">$$ \vec{p}_{αρχ} = \vec{p}_{τελ} \Rightarrow m \cdot \upsilon_0 = (M + m) \cdot V_σ $$</div>
+            <div class="math-box">$$ V_σ = \frac{m \cdot \upsilon_0}{M + m} = \frac{0{,}050 \cdot 20}{0{,}150 + 0{,}050} = \frac{1}{0{,}2} = 5\,\text{m/s} $$</div>
+
+            <p><strong>2. Κυκλική συχνότητα ταλάντωσης:</strong></p>
+            <div class="math-box">$$ \omega = \sqrt{\frac{k}{M + m}} = \sqrt{\frac{80}{0{,}2}} = \sqrt{400} = 20\,\text{rad/s} $$</div>
+
+            <p><strong>3. Πλάτος ταλάντωσης:</strong></p>
+            <p>Αμέσως μετά την κρούση, το συσσωμάτωμα βρίσκεται στη Θ.Φ.Μ. (Θ.Ι.), με μέγιστη ταχύτητα $V_σ$. Άρα:</p>
+            <div class="math-box">$$ V_σ = \omega A \Rightarrow A = \frac{V_σ}{\omega} = \frac{5}{20} = 0{,}25\,\text{m} $$</div>
+
+            <p><strong>4. Απόσταση σε μία περίοδο:</strong></p>
+            <p>Σε μία περίοδο ΑΑΤ, το σώμα διανύει $4A$:</p>
+            <div class="math-box">$$ s = 4A = 4 \cdot 0{,}25 = 1\,\text{m} $$</div>
+
+            <div class="result-box"><strong>$s = 1\,\text{m}$</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'D1', 8)" class="px-4 py-2 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold hover:bg-emerald-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+8)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Δ2 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="D2" data-theme="D" data-points="9" data-type="open">
+      <h3 class="sr-only">Ερώτηση Δ2</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-emerald-600 text-sm tracking-wide">Δ2</span>
+        <span class="text-xs font-medium text-slate-500">9 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Στην άκρη του προηγούμενου οριζόντιου ελατηρίου σταθεράς $k = 80\,\text{N/m}$, συνδέουμε τώρα ένα σώμα μάζας $M' = 50\,\text{g}$, που είναι αρνητικά φορτισμένο με ηλεκτρικό φορτίο $q = -0{,}1\,\text{C}$. Στην περιοχή που βρίσκεται όλη η διάταξη επικρατεί οριζόντιο ομογενές μαγνητικό πεδίο έντασης μέτρου $B = 1\,\text{T}$ και φοράς από τον αναγνώστη προς τη σελίδα, όπως φαίνεται στο Σχήμα 2. Το σώμα μάζας M' αρχικά ισορροπεί ακίνητο με το ελατήριο να έχει το φυσικό του μήκος. Κάποια στιγμή, απομακρύνουμε το σώμα μάζας M' οριζόντια κατά d, στη διεύθυνση του άξονα του ελατηρίου και το αφήνουμε ελεύθερο, με αποτέλεσμα να εκτελέσει απλή αρμονική ταλάντωση πάνω στο λείο οριζόντιο επίπεδο. <br><br><strong>Δ2.</strong> Να υπολογίσετε τη μέγιστη απομάκρυνση $d_{max}$ που μπορούμε να δώσουμε στο σώμα μάζας M', έτσι ώστε αυτό να μην χάνει κατά την κίνησή του την επαφή του με το έδαφος.</p>
+
+        <div class="my-4 flex justify-center">
+          <img src="https://i.imgur.com/Jz4zgrB.png" alt="Σχήμα 2 Δ" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+        </div>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-emerald-50 group-open:text-emerald-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-4">
+            <div class="my-4 flex justify-center">
+  <img src="https://i.imgur.com/kyPwcmW.png" alt="Σχήμα λύσης Δ2" class="rounded-xl border border-slate-200 max-w-full h-auto shadow-sm">
+</div>
+            <p><strong>1. Δυνάμεις στο σώμα M':</strong></p>
+            <p>Το σώμα M' δέχεται:</p>
+            <ul class="list-disc pl-6 space-y-1">
+              <li>Βάρος $W = M'g$ (προς τα κάτω)</li>
+              <li>Κάθετη αντίδραση $N$ από το έδαφος (προς τα πάνω)</li>
+              <li>Δύναμη ελατηρίου (οριζόντια)</li>
+              <li>Δύναμη Lorentz $F_L = B \cdot |q| \cdot \upsilon$ (κάθετη στην ταχύτητα και στο B, άρα <strong>κατακόρυφη</strong>)</li>
+            </ul>
+            <p>Με τον κανόνα του δεξιού χεριού: όταν το σώμα κινείται <strong>προς τα αριστερά</strong>, η $F_L$ έχει φορά <strong>προς τα πάνω</strong>. Όταν κινείται προς τα δεξιά, η $F_L$ έχει φορά προς τα κάτω.</p>
+
+            <p><strong>2. Συνθήκη μη-αποκόλλησης:</strong></p>
+            <p>Για να μη χάνει την επαφή με το έδαφος, απαιτείται $N \ge 0$. Στη χειρότερη περίπτωση (κίνηση προς τα αριστερά, μέγιστη ταχύτητα $v_{max}$):</p>
+            <div class="math-box">$$ N + F_{L,max} - M'g = 0 \Rightarrow N = M'g - B|q|v_{max} $$</div>
+            <p>Απαίτηση $N \ge 0$:</p>
+            <div class="math-box">$$ M'g \ge B|q|v_{max} \Rightarrow v_{max} \le \frac{M'g}{B|q|} $$</div>
+
+            <p><strong>3. Σύνδεση με πλάτος:</strong></p>
+            <p>Για ΑΑΤ: $v_{max} = \omega' A_{max}$, όπου:</p>
+            <div class="math-box">$$ \omega' = \sqrt{\frac{k}{M'}} = \sqrt{\frac{80}{0{,}05}} = \sqrt{1600} = 40\,\text{rad/s} $$</div>
+            <p>Άρα:</p>
+            <div class="math-box">$$ A_{max} = \frac{v_{max}}{\omega'} = \frac{M'g}{B|q|\omega'} = \frac{0{,}05 \cdot 10}{1 \cdot 0{,}1 \cdot 40} = \frac{0{,}5}{4} = 0{,}125\,\text{m} $$</div>
+
+            <div class="result-box"><strong>$d_{max} = A_{max} = 0{,}125\,\text{m}$</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'D2', 9)" class="px-4 py-2 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold hover:bg-emerald-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+9)
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Δ3 -->
+    <article class="problem-card bg-white rounded-2xl border border-slate-200 mb-6 shadow-sm overflow-hidden" data-question="D3" data-theme="D" data-points="8" data-type="open">
+      <h3 class="sr-only">Ερώτηση Δ3</h3>
+      <div class="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+        <span class="font-bold text-emerald-600 text-sm tracking-wide">Δ3</span>
+        <span class="text-xs font-medium text-slate-500">8 μονάδες</span>
+      </div>
+      <div class="p-6">
+        <span class="ekfwnisi-label">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Εκφώνηση
+        </span>
+        <p class="text-slate-800 font-medium mb-4">Όταν το σώμα μάζας M' = 50 g, ισορροπεί ακίνητο με το ελατήριο να έχει το φυσικό του μήκος, το απομακρύνουμε οριζόντια προς τα δεξιά κατά $d = 0{,}1\,\text{m}$, στη διεύθυνση του άξονα του ελατηρίου και το αφήνουμε ελεύθερο, με αποτέλεσμα να εκτελέσει απλή αρμονική ταλάντωση πάνω στο λείο οριζόντιο επίπεδο. Να υπολογίσετε τη δύναμη Lorentz που ασκείται στο σώμα μάζας M' όταν βρεθεί για πρώτη φορά σε απομάκρυνση $x = +0{,}05\,\text{m}$ από τη θέση ισορροπίας του, θεωρώντας ως θετική φορά στην ταλάντωση εκείνη κατά την οποία το ελατήριο επιμηκύνεται.</p>
+
+        <details class="solution-details group border border-slate-200 rounded-xl overflow-hidden mt-4">
+          <summary class="px-4 py-3 bg-slate-50 text-xs font-bold text-slate-700 cursor-pointer select-none flex items-center justify-between group-open:bg-emerald-50 group-open:text-emerald-700 transition-colors">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-key" style="color: var(--theme)"></i><span class="sol-show">Εμφάνιση αναλυτικής λύσης</span><span class="sol-hide">Απόκρυψη λύσης</span></span>
+            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="p-5 border-t border-slate-200 text-sm leading-relaxed space-y-4">
+            <p><strong>1. Πλάτος ταλάντωσης:</strong></p>
+            <p>Αφήνουμε το σώμα από $d = 0{,}1\,\text{m}$ με $v_0 = 0$, άρα $A = 0{,}1\,\text{m}$.</p>
+            <p>$d_{max} = 0{,}125\,\text{m} > 0{,}1\,\text{m}$, άρα το σώμα δεν χάνει την επαφή με το έδαφος. ✅</p>
+
+            <p><strong>2. Ταχύτητα στη θέση $x = +0{,}05\,\text{m}$ (ΑΔΕΤ):</strong></p>
+            <div class="math-box">$$ E = K + U \Rightarrow \frac{1}{2}kA^2 = \frac{1}{2}M'\upsilon^2 + \frac{1}{2}kx^2 $$</div>
+            <div class="math-box">$$ \upsilon^2 = \frac{k(A^2 - x^2)}{M'} = \frac{80(0{,}01 - 0{,}0025)}{0{,}05} = \frac{80 \cdot 0{,}0075}{0{,}05} = 12 $$</div>
+            <div class="math-box">$$ \upsilon = \pm 2\sqrt{3}\,\text{m/s} $$</div>
+            <p>Δεχόμαστε την <strong>αρνητική</strong> τιμή, γιατί με θετική φορά προς τα δεξιά (όπου το ελατήριο επιμηκύνεται), το σώμα κατευθύνεται προς τα αριστερά όταν διέρχεται για πρώτη φορά από το $x = +0{,}05\,\text{m}$:</p>
+            <div class="math-box">$$ \upsilon = -2\sqrt{3}\,\text{m/s} $$</div>
+
+            <p><strong>3. Δύναμη Lorentz:</strong></p>
+            <div class="math-box">$$ F_L = B \cdot |q| \cdot |\upsilon| = 1 \cdot 0{,}1 \cdot 2\sqrt{3} = 0{,}2\sqrt{3}\,\text{N} $$</div>
+            <p>Η φορά είναι <strong>προς τα πάνω</strong> (γιατί το σώμα κινείται προς τα αριστερά, άρα η $F_L$ έχει φορά προς τα πάνω — Σχήμα 2).</p>
+
+            <div class="result-box"><strong>$F_L = 0{,}2\sqrt{3}\,\text{N}$, φορά προς τα πάνω</strong></div>
+          </div>
+        </details>
+
+        <div class="mt-4 flex justify-end">
+          <button onclick="markOpen(this, 'D3', 8)" class="px-4 py-2 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold hover:bg-emerald-200 transition-colors">
+            <i class="fa-solid fa-check mr-1"></i> Το έλυσα σωστά (+8)
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="summary" class="mb-12 scroll-mt-32">
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 pb-3">
+      <h2 class="text-2xl font-serif font-bold text-slate-900 flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 text-white flex items-center justify-center shadow-md">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </span>
+        Τελικός πίνακας απαντήσεων
+      </h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">Σύνοψη</span>
+    </div>
+
+    <div class="overflow-x-auto custom-scrollbar rounded-2xl border border-slate-200 shadow-sm">
+      <table class="w-full text-xs border-collapse min-w-[560px] table-fixed">
+        <thead>
+          <tr class="bg-slate-50">
+            <th class="px-2 py-1.5 text-left font-bold text-slate-700 border-b-2 border-slate-200 w-16">Ερώτηση</th>
+            <th class="px-2 py-1.5 text-left font-bold text-slate-700 border-b-2 border-slate-200 w-[38%]">Απάντηση</th>
+            <th class="px-2 py-1.5 text-left font-bold text-slate-700 border-b-2 border-slate-200">Σύντομη αιτιολόγηση</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-cyan-700 bg-cyan-50/40">Α1</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">γ) Η ορμή του</td>
+            <td class="px-2 py-1.5 text-slate-600">$F_L \perp \upsilon$ → αλλάζει διεύθυνση ορμής</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-cyan-700 bg-cyan-50/40">Α2</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">β) P' = 16P</td>
+            <td class="px-2 py-1.5 text-slate-600">$V_0 \propto \omega$, $P \propto V_0^2 \propto \omega^2$...</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-cyan-700 bg-cyan-50/40">Α3</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">β) 50%</td>
+            <td class="px-2 py-1.5 text-slate-600">$A \propto \sqrt{E}$, $E = 0{,}25 E_0 \Rightarrow A = 0{,}5 A_0$</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-cyan-700 bg-cyan-50/40">Α4</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">γ) Αντίθετη</td>
+            <td class="px-2 py-1.5 text-slate-600">$\Delta\lambda = 2h/mc \Rightarrow \theta = 180°$</td>
+          </tr>
+          <tr class="border-b-2 border-slate-200">
+            <td class="px-2 py-1.5 font-bold text-cyan-700 bg-cyan-50/40">Α5</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">Σ, Σ, Λ, Σ, Λ</td>
+            <td class="px-2 py-1.5 text-slate-600">Στροφορμή, ΑΔΟ, περιστροφή, παλίρροια, Ampere</td>
+          </tr>
+
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-blue-700 bg-blue-50/40">Β1</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">α) $\Delta t_1 = (3/4)\Delta t_2$</td>
+            <td class="px-2 py-1.5 text-slate-600">$\Delta t_1 = T/2$, $\Delta t_2 = 2T/3$</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-blue-700 bg-blue-50/40">Β2</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">α) 18A</td>
+            <td class="px-2 py-1.5 text-slate-600">$6A + 12A = 18A$</td>
+          </tr>
+          <tr class="border-b-2 border-slate-200">
+            <td class="px-2 py-1.5 font-bold text-blue-700 bg-blue-50/40">Β3</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">γ) $2E^2/9R$</td>
+            <td class="px-2 py-1.5 text-slate-600">$i_L = E/3R$, $P = E_{αυτ} \cdot i_L$</td>
+          </tr>
+
+          <tr class="border-b border-slate-100">
+           <td class="px-2 py-1.5 font-bold text-indigo-700 bg-indigo-50/40">Γ1</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$A = 7\,mg$</td>
+
+            <td class="px-2 py-1.5 text-slate-600">Ανάλυση δυνάμεων + ροπές</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-indigo-700 bg-indigo-50/40">Γ2.1</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$A = mg/k$</td>
+            <td class="px-2 py-1.5 text-slate-600">$u = \omega A$</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-indigo-700 bg-indigo-50/40">Γ2.2</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$T_1/T_2 = 3$</td>
+            <td class="px-2 py-1.5 text-slate-600">$T_1 = 8mg$, $T_2 = 4mg$</td>
+          </tr>
+          <tr class="border-b-2 border-slate-200">
+            <td class="px-2 py-1.5 font-bold text-indigo-700 bg-indigo-50/40">Γ3</td>
+          <td class="px-2 py-1.5 font-semibold text-emerald-700">$A_{max} = 2mg/k$</td>
+            <td class="px-2 py-1.5 text-slate-600">Τάση νήματος $T \ge 0$</td>
+          </tr>
+
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-emerald-700 bg-emerald-50/40">Δ1</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$s = 1\,\text{m}$</td>
+            <td class="px-2 py-1.5 text-slate-600">$V_σ = 5$ m/s, $\omega = 20$ rad/s, $A = 0{,}25$ m</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="px-2 py-1.5 font-bold text-emerald-700 bg-emerald-50/40">Δ2</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$d_{max} = 0{,}125\,\text{m}$</td>
+            <td class="px-2 py-1.5 text-slate-600">$N \ge 0 \Rightarrow B|q|v_{max} \le M'g$</td>
+          </tr>
+          <tr>
+            <td class="px-2 py-1.5 font-bold text-emerald-700 bg-emerald-50/40">Δ3</td>
+            <td class="px-2 py-1.5 font-semibold text-emerald-700">$F_L = 0{,}2\sqrt{3}\,\text{N}$ ↑</td>
+            <td class="px-2 py-1.5 text-slate-600">ΑΔΕΤ → $\upsilon = -2\sqrt{3}$ m/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="finalScore" class="mt-6 p-6 rounded-2xl bg-gradient-to-r from-slate-100 to-slate-200 border border-slate-300 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-slate-600 mb-2">Τελικό σκορ</p>
+      <p class="text-4xl font-extrabold text-slate-900 mb-2"><span id="finalScoreValue">0</span> <span class="text-base font-semibold text-slate-500">/ 100 μονάδες</span></p>
+      <p id="finalGrade" class="text-sm font-semibold text-slate-700"></p>
+    </div>
+  </section>
+
+  <section id="download-section" class="glass-panel p-6 rounded-2xl mb-12 shadow-sm text-center no-print">
+    <h2 class="text-base font-bold text-slate-900 mb-2 flex items-center justify-center gap-2">
+      <i class="fa-solid fa-cloud-arrow-down text-sky-500"></i> Λήψη αρχείων
+    </h2>
+    <p class="text-xs text-slate-500 mb-5 max-w-lg mx-auto">
+      Κατεβάστε τα θέματα και τις αναλυτικές λύσεις σε μορφή Word ή PDF.
+    </p>
+
+    <div class="download-buttons flex flex-wrap items-center justify-center gap-4">
+      <a href="https://docs.google.com/document/d/1GhdbLckTSr8BxL6eIy_cjwCoBFzG2Xms/edit?usp=sharing&ouid=101935487679823763114&rtpof=true&sd=true" target="_blank" rel="noopener"
+         class="download-btn download-btn-word inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all"
+         style="color: #ffffff !important;">
+        <i class="fa-solid fa-file-word text-lg" style="color: #ffffff !important;"></i>
+        <span style="color: #ffffff !important;">Έγγραφο Word (.docx)</span>
+      </a>
+      <a href="https://drive.google.com/file/d/1ucQ2JCiB6iy5mmOBlLsdOXRAxBldgsYY/view?usp=sharing" target="_blank" rel="noopener"
+         class="download-btn download-btn-pdf inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all"
+         style="color: #ffffff !important;">
+        <i class="fa-solid fa-file-pdf text-lg" style="color: #ffffff !important;"></i>
+        <span style="color: #ffffff !important;">Αρχείο PDF</span>
+      </a>
+    </div>
+    <p class="text-[10px] text-slate-400 mt-3">⚠️ Αντικαταστήστε τα <code>#</code> με τα URLs των αρχείων σας</p>
+  </section>
+
+</main>
+
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Επιστροφή στην κορυφή" class="fixed bottom-5 right-5 w-11 h-11 rounded-full bg-slate-900/90 text-white shadow-lg opacity-0 pointer-events-none transition-opacity duration-250 z-40 no-print flex items-center justify-center hover:bg-slate-800">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<button id="backButton" onclick="goBack()" aria-label="Επιστροφή" class="fixed bottom-5 left-5 w-11 h-11 rounded-full bg-white/95 text-slate-700 border border-slate-200 shadow-lg z-40 no-print flex items-center justify-center hover:bg-slate-100 transition-all">
+  <i class="fa-solid fa-arrow-left"></i>
+</button>
+
+<div id="calculatorModal" role="dialog" aria-modal="true" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+  <div class="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+    <button onclick="toggleCalculator()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-calculator text-blue-500"></i> Υπολογιστής Φυσικής
+    </h3>
+    <div class="space-y-4 text-xs sm:text-sm">
+      <div>
+        <label class="block font-medium mb-1 text-slate-700">Μάζα M (kg):</label>
+        <input type="number" id="calcMass" value="0.15" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-mono">
+      </div>
+      <div>
+        <label class="block font-medium mb-1 text-slate-700">Σταθερά ελατηρίου k (N/m):</label>
+        <input type="number" id="calcSpring" value="80" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-mono">
+      </div>
+      <div>
+        <label class="block font-medium mb-1 text-slate-700">Πλάτος A (m):</label>
+        <input type="number" id="calcAmplitude" value="0.25" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-mono">
+      </div>
+      <button onclick="runSpringCalc()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all shadow-md">
+        Υπολογισμός ω, T, υ_max
+      </button>
+      <div class="p-3 bg-slate-100 rounded-xl space-y-1 font-mono text-xs">
+        <p>Γωνιακή συχνότητα ω: <span id="resOmega" class="font-bold text-blue-600">-</span></p>
+        <p>Περίοδος T: <span id="resPeriod" class="font-bold text-emerald-600">-</span></p>
+        <p>Μέγιστη ταχύτητα υ_max: <span id="resVmax" class="font-bold text-indigo-600">-</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cheatsheetDrawer" class="fixed right-0 top-0 h-full w-80 max-w-full bg-white border-l border-slate-200 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl p-6 overflow-y-auto no-print">
+  <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+    <h3 class="font-bold text-slate-900 flex items-center gap-2 text-sm">
+      <i class="fa-solid fa-book-bookmark text-cyan-500"></i> Τυπολόγιο φυσικής
+    </h3>
+    <button onclick="toggleCheatsheet()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="space-y-4 text-xs leading-relaxed">
+    <div class="p-3 bg-slate-50 rounded-xl">
+      <p class="font-bold text-cyan-600 mb-1">Ταλαντώσεις</p>
+      <p>$\omega = \sqrt{k/m}$, $T = 2\pi\sqrt{m/k}$</p>
+      <p>$\upsilon_{max} = \omega A$, $a_{max} = \omega^2 A$</p>
+      <p>$E = \frac{1}{2}kA^2 = \frac{1}{2}m\upsilon^2 + \frac{1}{2}kx^2$</p>
+    </div>
+    <div class="p-3 bg-slate-50 rounded-xl">
+      <p class="font-bold text-blue-600 mb-1">Κύματα &amp; συμβολή</p>
+      <p>$\Delta\phi = \frac{2\pi}{\lambda}(r_1 - r_2)$</p>
+      <p>Ενισχυτική: $r_1 - r_2 = N\lambda$</p>
+      <p>Αποσβεστική: $r_1 - r_2 = (2N+1)\frac{\lambda}{2}$</p>
+    </div>
+    <div class="p-3 bg-slate-50 rounded-xl">
+      <p class="font-bold text-indigo-600 mb-1">Στερεό σώμα</p>
+      <p>$\Sigma\tau = I \cdot a_{γων}$</p>
+      <p>$\tau = F \cdot d$</p>
+      <p>Ισορροπία: $\Sigma F = 0, \Sigma\tau = 0$</p>
+    </div>
+    <div class="p-3 bg-slate-50 rounded-xl">
+      <p class="font-bold text-emerald-600 mb-1">Κρούσεις &amp; Lorentz</p>
+      <p>$m_1\upsilon_1 = m_1\upsilon_1' + m_2\upsilon_2'$</p>
+      <p>$F_L = B|q|\upsilon$ (κάθετη σε $\upsilon$ και $B$)</p>
+      <p>Compton: $\Delta\lambda = \frac{h}{mc}(1 - \sigma\upsilon\nu\theta)$</p>
+    </div>
+    <div class="p-3 bg-slate-50 rounded-xl">
+      <p class="font-bold text-rose-600 mb-1">Ηλεκτρικά κυκλώματα</p>
+      <p>$V = IR$, $P = VI = I^2R = V^2/R$</p>
+      <p>Αυτεπαγωγή: $E_{αυτ} = -L\frac{\Delta i}{\Delta t}$</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const scoreState = {
+  A: { earned: 0, total: 25, answered: new Set() },
+  B: { earned: 0, total: 25, answered: new Set() },
+  G: { earned: 0, total: 25, answered: new Set() },
+  D: { earned: 0, total: 25, answered: new Set() }
+};
+
+function updateScore(theme, questionId, points, add) {
+  const s = scoreState[theme];
+  if (!s) return;
+  if (add) {
+    if (!s.answered.has(questionId)) {
+      s.answered.add(questionId);
+      s.earned += points;
+    }
+  } else {
+    if (s.answered.has(questionId)) {
+      s.answered.delete(questionId);
+      s.earned = Math.max(0, s.earned - points);
+    }
+  }
+  s.earned = Math.min(s.earned, s.total);
+  refreshScoreUI();
+}
+
+function refreshScoreUI() {
+  const totalEarned = scoreState.A.earned + scoreState.B.earned + scoreState.G.earned + scoreState.D.earned;
+
+  document.getElementById('scoreA').textContent = scoreState.A.earned;
+  document.getElementById('scoreB').textContent = scoreState.B.earned;
+  document.getElementById('scoreG').textContent = scoreState.G.earned;
+  document.getElementById('scoreD').textContent = scoreState.D.earned;
+
+  document.getElementById('barA').style.width = (scoreState.A.earned / 25 * 100) + '%';
+  document.getElementById('barB').style.width = (scoreState.B.earned / 25 * 100) + '%';
+  document.getElementById('barG').style.width = (scoreState.G.earned / 25 * 100) + '%';
+  document.getElementById('barD').style.width = (scoreState.D.earned / 25 * 100) + '%';
+
+  document.getElementById('scoreValue').textContent = totalEarned;
+  document.getElementById('finalScoreValue').textContent = totalEarned;
+
+  const gradeEl = document.getElementById('finalGrade');
+  let grade = '';
+  if (totalEarned === 0) grade = 'Δεν έχει ξεκινήσει η αξιολόγηση.';
+  else if (totalEarned < 50) grade = '📚 Χρειάζεται περισσότερη μελέτη.';
+  else if (totalEarned < 70) grade = '👍 Καλή προσπάθεια!';
+  else if (totalEarned < 85) grade = '🎯 Πολύ καλή επίδοση!';
+  else if (totalEarned < 100) grade = '⭐ Εξαιρετική επίδοση!';
+  else grade = '🏆 Τέλειο σκορ!';
+  gradeEl.textContent = grade;
+
+  const widget = document.getElementById('scoreWidget');
+  widget.classList.add('pulse-on-update');
+  setTimeout(() => widget.classList.remove('pulse-on-update'), 400);
+}
+
+function resetScore() {
+  Object.keys(scoreState).forEach(k => {
+    scoreState[k].earned = 0;
+    scoreState[k].answered.clear();
+  });
+  document.querySelectorAll('.quiz-opt').forEach(o => {
+    o.classList.remove('border-emerald-500', 'bg-emerald-50', 'text-emerald-700',
+      'border-rose-500', 'bg-rose-50', 'text-rose-700');
+  });
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.tf-btn').forEach(b => {
+    b.disabled = false;
+    b.classList.remove('bg-emerald-100', 'border-emerald-500', 'text-emerald-700',
+      'bg-rose-100', 'border-rose-500', 'text-rose-700');
+  });
+  document.querySelectorAll('button[data-marked]').forEach(b => {
+    b.removeAttribute('data-marked');
+    b.classList.remove('ring-2', 'ring-emerald-500');
+  });
+  refreshScoreUI();
+}
+
+function revealContent() {
+  const rest = document.getElementById('rest-content');
+  const btn = document.getElementById('reveal-btn-container');
+  rest.classList.add('revealed');
+  btn.style.display = 'none';
+  document.body.classList.add('revealed-all');
+  rest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateHeadingsColor() {
+  const main = document.querySelector('main');
+  if (!main) return;
+  const isDark = main.classList.contains('physics-dark');
+  const headings = {
+    'tema-a': isDark ? '#67e8f9' : '#0e7490',
+    'tema-b': isDark ? '#93c5fd' : '#1d4ed8',
+    'tema-g': isDark ? '#a5b4fc' : '#4338ca',
+    'tema-d': isDark ? '#6ee7b7' : '#047857'
+  };
+  Object.entries(headings).forEach(([sectionId, color]) => {
+    const section = document.getElementById(sectionId);
+    const heading = section?.querySelector('h2.text-2xl');
+    if (heading) heading.style.color = color;
+  });
+}
+
+function updateThemeIcon() {
+  const main = document.querySelector('main');
+  const isDark = main && main.classList.contains('physics-dark');
+  document.getElementById('themeIconMoon').classList.toggle('hidden', isDark);
+  document.getElementById('themeIconSun').classList.toggle('hidden', !isDark);
+}
+
+function toggleTheme() {
+  const main = document.querySelector('main');
+  if (!main) return;
+  const isDark = main.classList.toggle('physics-dark');
+  try { localStorage.setItem('physics-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+  updateHeadingsColor();
+  updateThemeIcon();
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progressBar').style.width = (window.scrollY / h) * 100 + '%';
+    const b = document.getElementById('toTop');
+    const show = window.scrollY > 600;
+    b.classList.toggle('opacity-0', !show);
+    b.classList.toggle('pointer-events-none', !show);
+    ticking = false;
+  });
+}, { passive: true });
+
+function selectQuizOption(element, qName, points) {
+  const container = element.closest('.quiz-options');
+  const card = element.closest('.problem-card');
+  const theme = card.dataset.theme;
+  const correctIdx = parseInt(container.getAttribute('data-correct'));
+  const radio = element.querySelector('input[type="radio"]');
+  const idx = [...container.querySelectorAll('.quiz-opt')].indexOf(element);
+
+  if (radio) radio.checked = true;
+
+  container.querySelectorAll('.quiz-opt').forEach((opt, i) => {
+    opt.classList.remove(
+      'border-emerald-500', 'bg-emerald-50', 'text-emerald-700',
+      'border-rose-500', 'bg-rose-50', 'text-rose-700'
+    );
+    if (i === correctIdx) {
+      opt.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-700');
+    } else if (opt === element && i !== correctIdx) {
+      opt.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-700');
+    }
+  });
+
+  updateScore(theme, qName, points, idx === correctIdx);
+
+  const details = card.querySelector('details.solution-details');
+  if (details) details.open = true;
+}
+
+function answerTF(btn, chosen, points) {
+  const row = btn.closest('[data-answer]');
+  const card = row.closest('.problem-card');
+  const theme = card.dataset.theme;
+  const qName = card.dataset.question;
+  const correct = row.getAttribute('data-answer');
+  const isCorrect = chosen === correct;
+  const tfPoints = parseInt(row.getAttribute('data-tf-points')) || points;
+
+  row.querySelectorAll('.tf-btn').forEach(b => {
+    b.disabled = true;
+    b.classList.remove('hover:border-emerald-500', 'hover:border-rose-500');
+  });
+  btn.classList.add(
+    isCorrect ? 'bg-emerald-100' : 'bg-rose-100',
+    isCorrect ? 'border-emerald-500' : 'border-rose-500',
+    isCorrect ? 'text-emerald-700' : 'text-rose-700'
+  );
+
+  const letter = row.getAttribute('data-letter') || (qName + '-' + [...row.parentNode.children].indexOf(row));
+  updateScore(theme, qName + '-' + letter, tfPoints, isCorrect);
+}
+
+function markMC(btn, qName, points) { markOpen(btn, qName, points); }
+function markTFGroup(btn, qName, points) { markOpen(btn, qName, points); }
+
+function markOpen(btn, qName, points) {
+  const card = btn.closest('.problem-card');
+  const theme = card.dataset.theme;
+  const marked = btn.hasAttribute('data-marked');
+  if (marked) {
+    btn.removeAttribute('data-marked');
+    btn.classList.remove('ring-2', 'ring-emerald-500');
+    updateScore(theme, qName, points, false);
+  } else {
+    btn.setAttribute('data-marked', '1');
+    btn.classList.add('ring-2', 'ring-emerald-500');
+    updateScore(theme, qName, points, true);
+  }
+}
+
+function toggleCalculator() { document.getElementById('calculatorModal').classList.toggle('hidden'); }
+function toggleCheatsheet() { document.getElementById('cheatsheetDrawer').classList.toggle('translate-x-full'); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('calculatorModal').classList.add('hidden');
+    document.getElementById('cheatsheetDrawer').classList.add('translate-x-full');
+  }
+});
+document.getElementById('calculatorModal').addEventListener('click', function (e) {
+  if (e.target === this) this.classList.add('hidden');
+});
+
+function runSpringCalc() {
+  const m = parseFloat(document.getElementById('calcMass').value);
+  const k = parseFloat(document.getElementById('calcSpring').value);
+  const A = parseFloat(document.getElementById('calcAmplitude').value);
+  if (!m || !k || !A) return;
+  const omega = Math.sqrt(k / m);
+  const T = 2 * Math.PI / omega;
+  const vmax = omega * A;
+  document.getElementById('resOmega').innerText = omega.toFixed(2) + ' rad/s';
+  document.getElementById('resPeriod').innerText = T.toFixed(4) + ' s';
+  document.getElementById('resVmax').innerText = vmax.toFixed(3) + ' m/s';
+}
+
+function goBack() {
+  if (window.history.length > 1) window.history.back();
+  else window.location.href = 'https://httpmyphysics.blogspot.com/';
+}
+
+(function () {
+  const links = [...document.querySelectorAll('header nav a[href^="#"]')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const a = map.get(e.target.id);
+      if (!a) return;
+      const activeClasses = ['ring-2', 'ring-cyan-500', 'bg-slate-100'];
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove(...activeClasses));
+        a.classList.add(...activeClasses);
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  ['tema-a', 'tema-b', 'tema-g', 'tema-d', 'summary'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const main = document.querySelector('main');
+  if (main && window.__savedTheme === 'dark') {
+    main.classList.add('physics-dark');
+  }
+  updateThemeIcon();
+  updateHeadingsColor();
+  refreshScoreUI();
+});
+
+if (document.readyState !== 'loading') {
+  const main = document.querySelector('main');
+  if (main && window.__savedTheme === 'dark') {
+    main.classList.add('physics-dark');
+  }
+  updateThemeIcon();
+  updateHeadingsColor();
+  refreshScoreUI();
+}
+</script>
+
+</body>
+</html>
